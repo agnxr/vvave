@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Img = props => (
-    <li>Obrazek</li>
+    <li><img src={props.src} alt={props.alt}/></li>
 )
 
 export default Img;

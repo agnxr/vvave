@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
                 "url": "https://www.petmd.com/sites/default/files/Acute-Dog-Diarrhea-47066074.jpg"
             },
             {
-                "id": 1,
+                "id": 3,
                 "title": "kot",
                 "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/Calico_tabby_cat_-_Savannah.jpg"
             }
@@ -25,7 +25,7 @@ class SearchBar extends React.Component {
 
     render(){
         const images = this.state.images.map(img => (
-            <Img />
+            <Img key={img.id} src={img.url} alt={img.title} />
         ))
 
         return (
