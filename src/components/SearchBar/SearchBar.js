@@ -1,26 +1,21 @@
 import React from 'react';
 //import './SearchBar.css';
 import Img from '../Img/Img';
+import data from '../../data/images.json';
 
 class SearchBar extends React.Component {
     state = {
-        images: [
-            {
-                "id": 1,
-                "title": "kot",
-                "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/Calico_tabby_cat_-_Savannah.jpg"
-            },
-            {
-                "id": 2,
-                "title": "pies",
-                "url": "https://www.petmd.com/sites/default/files/Acute-Dog-Diarrhea-47066074.jpg"
-            },
-            {
-                "id": 3,
-                "title": "kot",
-                "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/Calico_tabby_cat_-_Savannah.jpg"
-            }
-        ]
+        images: []
+    }
+
+    componentDidMount() {
+        fetch('data/images.json')
+        .then(response => response.json() )
+        .then(data => {
+            this.setState({
+                images: data.images
+            })
+        } )
     }
 
     render(){
