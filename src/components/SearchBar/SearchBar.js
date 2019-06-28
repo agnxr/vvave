@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
     }
 
     componentDidMount() {
-        fetch('../../data/images.json')
+        fetch('https://pixabay.com/api/')
         .then(response => response.json() )
         .then(json => {
             this.setState({
