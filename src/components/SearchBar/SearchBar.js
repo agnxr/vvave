@@ -27,8 +27,8 @@ class SearchBar extends React.Component {
 
         return (
             <>
-                <form action="" method="get" class="form-example">
-                        <label for="name">Find images: </label>
+                <form action="" method="get">
+                        <label htmlFor="name">Find images: </label>
                         <input type="text" name="name" id="name" placeholder="Search images..."  required />
                         <input type="submit" value="Search" />
                 </form>
