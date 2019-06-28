@@ -1,28 +1,58 @@
 import React from 'react';
 //import './SearchBar.css';
 import Img from '../Img/Img';
-import '../../data/images.json';
+
 
 class SearchBar extends React.Component {
     state = {
-        images: []
+        images: [],
+        users: [], 
+        ech: false
     }
-
+/*
     componentDidMount() {
         fetch('../../data/images.json')
         .then(response => response.json() )
-        .then(data => {
+        .then(json => {
             this.setState({
-                images: data.images
+                images: json.images
             })
         } )
     }
 
+*/
+    
+    componentDidMount() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://jsonplaceholder.typicode.com/users', true);
+
+        xhr.onload = () => {
+            console.log(xhr.status);
+            console.log(xhr.response);
+
+            if(xhr.status === 200) {
+                const users = JSON.parse(xhr.response);
+                console.log(users);
+                this.setState({ users })
+            }
+
+            if(xhr.status === 404) {
+                this.setState({ ech: true })
+            }
+        }
+        xhr.send(null)
+    }
+    
+
     render(){
-        const images = this.state.images.map(img => (
-            <Img key={img.id} src={img.url} alt={img.title} />
+
+        const users = this.state.users.map(user => (
+            <div>
+                <p>{user.address.geo.lat}</p>
+            </div>
         ))
 
+        const ech = this.state.ech;
         return (
             <>
                 <form action="" method="get" class="form-example">
@@ -31,7 +61,7 @@ class SearchBar extends React.Component {
                         <input type="submit" value="Search" />
                 </form>
                 <ul>
-                    {images}
+                    {ech ? "nie udalo sie" : users}
                 </ul>
             </>
         );
