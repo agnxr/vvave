@@ -1,7 +1,7 @@
 import React from 'react';
 //import './SearchBar.css';
 import Img from '../Img/Img';
-import data from '../../data/images.json';
+import '../../data/images.json';
 
 class SearchBar extends React.Component {
     state = {
@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
     }
 
     componentDidMount() {
-        fetch('data/images.json')
+        fetch('../../data/images.json')
         .then(response => response.json() )
         .then(data => {
             this.setState({
