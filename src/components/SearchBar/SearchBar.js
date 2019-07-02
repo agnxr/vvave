@@ -8,17 +8,10 @@ class SearchBar extends React.Component {
         term: null,
         images: [],
         error: null,
+        number: 3,
     }
 
-    componentDidMount() {
-        fetch(`https://pixabay.com/api/?key=7129137-0ebf8cbfe5e38668049f26d2b&q=${this.state.term}&image_type=photo`)
-        .then(response => response.json() )
-        .then(json => {
-            this.setState({
-                images: json.hits
-            })
-        } )
-    }
+
 
 handleChange = (e) => {
     e.preventDefault();
@@ -31,7 +24,7 @@ handleChange = (e) => {
 handleSearch = (e) => {
     e.preventDefault();
 
-    fetch(`https://pixabay.com/api/?key=7129137-0ebf8cbfe5e38668049f26d2b&q=${this.state.term}&image_type=photo`)
+    fetch(`https://pixabay.com/api/?key=7129137-0ebf8cbfe5e38668049f26d2b&q=${this.state.term}&image_type=photo&per_page=${this.state.number}`)
     .then(response => {
         if(response.ok){
             return response;
@@ -47,6 +40,19 @@ handleSearch = (e) => {
     .catch(error => this.setState({ error: error + " eeech" }))
 }
 
+/*
+handleMoreSearch = (e) => {
+
+    e.preventDefault(e);
+
+        this.setState({ 
+            images: this.state.images.concat();
+        })
+    
+    this.handleSearch(e);
+
+} */
+
     /*
     response.json() )
     .then(json => {
@@ -58,7 +64,7 @@ handleSearch = (e) => {
 
     render(){
         const images = this.state.images.map(img => (
-            <Img src={img.previewURL} url={img.largeImageURL} download={img.largeImageURL}/>
+            <Img key={img.id} src={img.previewURL} url={img.largeImageURL} download={img.largeImageURL}/>
         ))
 
         return (
@@ -72,6 +78,8 @@ handleSearch = (e) => {
                 <ul>
                     {images}
                 </ul>
+                {images.length < 1 ? <p>no results</p> : null }
+                {images.length > 1 ? <button onClick={this.handleMoreSearch}>daleeej</button> : null }
             </>
         );
     }
