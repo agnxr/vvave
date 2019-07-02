@@ -13,7 +13,8 @@ const Pixabay = {
                 return jsonResponse.hits.map(((img) => {
                     console.log(img);
                     return {
-                    src: img.imageURL,
+                    img: img.previewURL,
+                    src: img.imageURL
                     };
                 }));
             }

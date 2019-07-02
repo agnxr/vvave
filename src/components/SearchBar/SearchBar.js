@@ -9,11 +9,11 @@ class SearchBar extends React.Component {
     }
 
     componentDidMount() {
-        fetch('https://pixabay.com/api/')
+        fetch('https://pixabay.com/api/?key=7129137-0ebf8cbfe5e38668049f26d2b&q=yellow+flowers&image_type=photo')
         .then(response => response.json() )
         .then(json => {
             this.setState({
-                images: json.images
+                images: json.hits
             })
         } )
     }
@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
 
     render(){
         const images = this.state.images.map(img => (
-            <Img key={img.id} src={img.url} alt={img.title} />
+            <p>{img.likes}</p>
         ))
 
         return (
