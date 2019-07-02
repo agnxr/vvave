@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
 
     render(){
         const images = this.state.images.map(img => (
-            <p>{img.likes}</p>
+            <Img src={img.previewURL} url={img.largeImageURL}/>
         ))
 
         return (
