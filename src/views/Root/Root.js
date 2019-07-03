@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import SearchBar from './components/SearchBar/SearchBar';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 
-class App extends React.Component {
+class Root extends React.Component {
   render(){
     return (
     <div className="App">
@@ -16,4 +16,4 @@ class App extends React.Component {
   };
 }
 
-export default App;
+export default Root;
