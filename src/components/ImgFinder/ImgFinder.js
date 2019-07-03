@@ -1,26 +1,24 @@
 import React from 'react';
-//import './SearchBar.css';
 import Img from '../Img/Img';
 
 
-class SearchBar extends React.Component {
+class ImgFinder extends React.Component {
     state = {
         term: null,
         images: [],
         error: null,
-        number: 10,
-        isShowAllVisible: false,
+        numberOfResults: 10,
+        isButtonVisible: false,
     }
 
 
+    handleChange = (e) => {
+        e.preventDefault();
 
-handleChange = (e) => {
-    e.preventDefault();
-
-    this.setState({ 
-        term: e.target.value
-    });
-}
+        this.setState({ 
+            term: e.target.value
+        });
+    }
 
 handleSearch = (e) => {
     e.preventDefault();
@@ -30,33 +28,29 @@ handleSearch = (e) => {
         if(response.ok){
             return response;
         }
-        throw Error (response.status)
+       // throw Error (response.status)
     })
     .then(response => response.json() )
     .then(json => {
         const allImages = json.hits;
         this.setState({
             allImages: allImages,
-            images: allImages.slice(0,this.state.number),
-            isShowAllVisible: true
+            images: allImages.slice(0,this.state.numberOfResults),
+            isButtonVisible: true
         })
     } )
-    .catch(error => this.setState({ error: error + " eeech" }))
+    .catch(error => this.setState({ error: `An error occured (${error})` }))
 }
 
 
 
-handleMoreSearch = (e) => {
-
-
+handleShowAll = (e) => {
     e.preventDefault(e);
-
-        this.setState({ 
-            images: this.state.allImages.slice(0, this.state.allImages.length),
-            isShowAllVisible: false
-        })
     
-
+    this.setState({ 
+        images: this.state.allImages.slice(0, this.state.allImages.length),
+        isButtonVisible: false
+    })
 } 
 
     /*
@@ -85,11 +79,11 @@ handleMoreSearch = (e) => {
                     {images}
                 </ul>
                 {images.length < 1 ? <p>no results</p> : null }
-                {images.length > 1 && this.state.isShowAllVisible ? <button onClick={this.handleMoreSearch}>show all images</button> : null }
+                {images.length > 1 && this.state.isButtonVisible ? <button onClick={this.handleShowAll}>show all images</button> : null }
             </>
         );
     }
 
 }
 
-export default SearchBar;
+export default ImgFinder;

@@ -1,7 +1,11 @@
 import React from 'react';
+import ImgFinder from '../../components/ImgFinder/ImgFinder';
 
 const ImagesView = () => (
-    <p>to jest widok obrazkow</p>
+    <>
+        <h2>Search for the inspirational images...</h2>
+        <ImgFinder />
+    </>
 )
 
 export default ImagesView;
