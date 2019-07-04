@@ -1,7 +1,11 @@
 import React from 'react';
+import FontFinder from '../../components/FontFinder/FontFinder';
 
 const FontsView = () => (
-    <p>to jest widok czcionek</p>
+    <>
+        <h2>Find a font for your project</h2>
+        <FontFinder />
+    </>
 )
 
 export default FontsView;

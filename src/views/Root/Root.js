@@ -11,7 +11,8 @@ class Root extends React.Component {
       <BrowserRouter>
         <>
         <header className="App-header">
-          <h1>Find inspirations for your project.</h1>
+          <h1>Find inspirations for your project</h1>
+          <p>everything you need in one place.</p>
         </header>
           <Navigation />
           <Switch>
