@@ -1,5 +1,7 @@
 import React from 'react';
-import Img from '../Img/Img';
+import Form from './Form/Form';
+import Button from './Button/Button';
+import ImgList from './ImgList/ImgList';
 
 
 class ImgFinder extends React.Component {
@@ -20,70 +22,59 @@ class ImgFinder extends React.Component {
         });
     }
 
-handleSearch = (e) => {
-    e.preventDefault();
+    handleSearch = (e) => {
+        e.preventDefault();
 
-    fetch(`https://pixabay.com/api/?key=7129137-0ebf8cbfe5e38668049f26d2b&q=${this.state.term}&image_type=photo`)
-    .then(response => {
-        if(response.ok){
-            return response;
-        }
-       // throw Error (response.status)
-    })
-    .then(response => response.json() )
-    .then(json => {
-        const allImages = json.hits;
-        this.setState({
-            allImages: allImages,
-            images: allImages.slice(0,this.state.numberOfResults),
-            isButtonVisible: true
+        fetch(`https://pixabay.com/api/?key=7129137-0ebf8cbfe5e38668049f26d2b&q=${this.state.term}&image_type=photo`)
+        .then(response => {
+            if(response.ok){
+                return response;
+            }
+        // throw Error (response.status)
         })
-    } )
-    .catch(error => this.setState({ error: `An error occured (${error})` }))
-}
+        .then(response => response.json() )
+        .then(json => {
+            const allImages = json.hits;
+            this.setState({
+                allImages: allImages,
+                images: allImages.slice(0,this.state.numberOfResults),
+                isButtonVisible: true
+            })
+        } )
+        .catch(error => this.setState({ error: `An error occured (${error})` }))
+    }
 
 
+    handleShowAll = (e) => {
+        e.preventDefault(e);
 
-handleShowAll = (e) => {
-    e.preventDefault(e);
-    
-    this.setState({ 
-        images: this.state.allImages.slice(0, this.state.allImages.length),
-        isButtonVisible: false
-    })
-} 
-
-    /*
-    response.json() )
-    .then(json => {
-        this.setState({
-            images: json.hits
+        this.setState({ 
+            images: this.state.allImages.slice(0, this.state.allImages.length),
+            isButtonVisible: false
         })
-    } )
-} */
+    } 
+
 
     render(){
-        const images = this.state.images.map(img => (
-            <Img key={img.id} src={img.previewURL} url={img.largeImageURL} download={img.largeImageURL}/>
-        ))
+        const { images, isButtonVisible } = this.state;
 
         return (
             <>
             <p>{this.state.error}</p>
-                <form action="" method="get">
-                        <label htmlFor="name">Find images: </label>
-                        <input onChange={this.handleChange} type="text" name="name" id="name" placeholder="Search images..."  required />
-                        <input onClick={this.handleSearch} type="submit" value="Search"/>
-                </form>
+                <Form 
+                    handleChangeFn={this.handleChange} 
+                    handleSearchFn={this.handleSearch}
+                />
                 <ul>
-                    {images}
+                    <ImgList 
+                        images={images}
+                    />
                 </ul>
-                {images.length < 1 ? <p>no results</p> : null }
-                {images.length > 1 && this.state.isButtonVisible ? <button onClick={this.handleShowAll}>show all images</button> : null }
+                {images.length < 1 && isButtonVisible ? <p>no results</p> : null }
+                {images.length > 1 && isButtonVisible ? <Button showAllFn={this.handleShowAll} /> : null }
             </>
         );
     }
-
 }
 
 export default ImgFinder;
