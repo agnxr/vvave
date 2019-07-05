@@ -63,6 +63,15 @@ const {categorySelected, fonts, serif, sansSerif } = this.state;
 
     return (
         <>
+
+
+        { fonts.map(font => (
+            <link href={`https://fonts.googleapis.com/css?family=${font.family}`} rel="stylesheet"></link>
+            
+        ))
+           
+        }
+
         <button 
             onClick={this.handleShowAllClick} 
             className={categorySelected === fonts ? styles.active : styles.option}>
@@ -80,6 +89,7 @@ const {categorySelected, fonts, serif, sansSerif } = this.state;
                         key={font.family}
                         fontFamily={font.family}
                         category={font.category}
+
                     />
                 ))
             }
