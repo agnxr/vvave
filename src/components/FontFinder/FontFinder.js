@@ -63,15 +63,17 @@ const {categorySelected, fonts, serif, sansSerif } = this.state;
 
     return (
         <>
-
-
-        { fonts.map(font => (
+        { 
+        
+            fonts.map(font => ( 
+                
             <link href={`https://fonts.googleapis.com/css?family=${font.family}`} rel="stylesheet"></link>
-            
-        ))
-           
+           // style={{@import url(`https://fonts.googleapis.com/css?family=${font.family}`)}}
+
+             )) 
         }
 
+<p>{fonts ? "eeech" : fonts }</p>
         <button 
             onClick={this.handleShowAllClick} 
             className={categorySelected === fonts ? styles.active : styles.option}>
@@ -89,6 +91,8 @@ const {categorySelected, fonts, serif, sansSerif } = this.state;
                         key={font.family}
                         fontFamily={font.family}
                         category={font.category}
+
+
 
                     />
                 ))
