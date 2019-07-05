@@ -3,7 +3,7 @@ import FontFinder from '../../components/FontFinder/FontFinder';
 
 const FontsView = () => (
     <>
-        <h2>Find a font for your project</h2>
+        <h2>Select a font for your project</h2>
         <FontFinder />
     </>
 )
