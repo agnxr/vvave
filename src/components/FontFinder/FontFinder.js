@@ -2,6 +2,7 @@ import React from 'react';
 import Font from './Font/Font';
 import styles from './FontFinder.module.scss';
 import Loader from './Loader/Loader';
+import Info from './Info/Info';
 
 
 class FontFinder extends React.Component {
@@ -138,13 +139,11 @@ const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLo
             fontFamilies
         }
 <       div>
-            <p>Available fonts: {  fontsAmount === null ?  <Loader /> : fontsAmount }
+  <p>Available fonts: {  fontsAmount === null ?  <Loader /> : <Info info={fontsAmount} /> } </p>
 
 
   
-
-</p>
-            { isButtonVisible ? <button onClick={this.handleStart}>Lets get started</button> : null }
+            { isButtonVisible && fontsAmount !== null ? <button className={styles.btn} onClick={this.handleStart}>Lets get started</button> : null }
         </div>
 
 
