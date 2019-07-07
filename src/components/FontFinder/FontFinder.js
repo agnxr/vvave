@@ -19,11 +19,6 @@ class FontFinder extends React.Component {
     }
 
 
-componentDidMount() {
-setTimeout(this.setState({
-    isLoaded: true
-}),6000)
-}
 
 componentDidMount() {
     fetch(`https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDR7baDJT2PMQ-FuyAZHCYNQS93yy6n2Ms`)
@@ -147,35 +142,32 @@ const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLo
         </div>
 
 
-<div>
-       { 
-       isLoaded ? 
+{ 
+    isLoaded ? <div className={styles.btn2} > 
+       
        <button 
             onClick={this.handleShowRandomFont} 
             className={categorySelected === randomFont ? styles.active : styles.option}>
                 random font
         </button>
-        : null
-       }
-        { isLoaded ?
+
         <button onClick={this.handleSerifClick}
         className={categorySelected === serif ? styles.active : styles.option}
         >Serif only</button> 
-        : null }
-        { isLoaded ?
+
         <button onClick={this.handleSansSerifClick}
         className={categorySelected === sansSerif ? styles.active : styles.option}
         >sans-serif only</button>
-        : null
-        }
-               { isLoaded ?
+
         <button 
             onClick={this.handleShowAllClick} 
             className={categorySelected === fonts ? styles.active : styles.option}>
                 All
         </button>
-        : null}
         </div>
+        :
+        null 
+}
          
 
         <div>
