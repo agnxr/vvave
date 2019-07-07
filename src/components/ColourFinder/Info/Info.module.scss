@@ -1,0 +1,12 @@
+.info {
+  opacity:0;
+  display:block;
+  animation: slidein 1s ease-out forwards;
+}
+
+
+@keyframes slidein{
+  0%{ opacity:0; }
+  100%{ opacity:1; }
+}
+

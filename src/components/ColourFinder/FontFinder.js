@@ -59,7 +59,7 @@ componentDidMount() {
     .catch(error => this.setState({ error: `An error occured (${error})` }))
 }
 
-handleStartClick = (e) => {
+handleStart= (e) => {
     e.preventDefault(e);
 
     this.setState({ 
@@ -111,12 +111,12 @@ const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLo
         
             fontFamilies
         }
-<div>
+<       div>
   <p>Available fonts: {  fontsAmount === null ?  <Loader /> : <Info info={fontsAmount} /> } </p>
 
 
   
-            { isButtonVisible && fontsAmount !== null ? <button className={styles.btn} onClick={this.handleStartClick}>Lets get started</button> : null }
+            { isButtonVisible && fontsAmount !== null ? <button className={styles.btn} onClick={this.handleStart}>Lets get started</button> : null }
         </div>
 
 
