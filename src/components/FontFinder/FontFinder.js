@@ -1,6 +1,7 @@
 import React from 'react';
 import Font from './Font/Font';
 import styles from './FontFinder.module.scss';
+import Loader from './Loader/Loader';
 
 
 class FontFinder extends React.Component {
@@ -12,7 +13,8 @@ class FontFinder extends React.Component {
         randomFont: [],
         fontFamilies: [],
         isLoaded: false,
-        isButtonVisible: true
+        isButtonVisible: true,
+        fontsAmount: null,
     }
 
 
@@ -52,6 +54,7 @@ componentDidMount() {
                // style={{@import url(`https://fonts.googleapis.com/css?family=${font.family}`)}}
     
                  )),
+                 fontsAmount: fonts.length,
                //  isLoaded: true
 
                 
@@ -101,20 +104,46 @@ handleShowRandomFont = (e) => {
     })
 }
 
+/*
+function countFonts(availableFonts) {
+    let counter = 0;
+        if(counter < availableFonts) {
+            counter++; 
+            return counter;
+        } 
+    setInterval(addSecond, 1000);
+} */
+
+
+countFonts = (availableFonts) => {
+    let counter = 0;
+
+setInterval(function(){
+  while (counter < availableFonts) {
+    counter++
+  }
+}, 1000);
+  }
+
+
+
 render(){
-const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLoaded, isButtonVisible } = this.state;
-const fontsAmount = fontFamilies.length;
+const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLoaded, isButtonVisible, fontsAmount} = this.state;
 
 
     return (
         <>
-        <div></div>
         { 
         
             fontFamilies
         }
 <       div>
-            <p>Available fonts: {fontsAmount}</p>
+            <p>Available fonts: {  fontsAmount === null ?  <Loader /> : fontsAmount }
+
+
+  
+
+</p>
             { isButtonVisible ? <button onClick={this.handleStart}>Lets get started</button> : null }
         </div>
 
@@ -129,13 +158,6 @@ const fontsAmount = fontFamilies.length;
         </button>
         : null
        }
-       { isLoaded ?
-        <button 
-            onClick={this.handleShowAllClick} 
-            className={categorySelected === fonts ? styles.active : styles.option}>
-                All
-        </button>
-        : null}
         { isLoaded ?
         <button onClick={this.handleSerifClick}
         className={categorySelected === serif ? styles.active : styles.option}
@@ -147,6 +169,13 @@ const fontsAmount = fontFamilies.length;
         >sans-serif only</button>
         : null
         }
+               { isLoaded ?
+        <button 
+            onClick={this.handleShowAllClick} 
+            className={categorySelected === fonts ? styles.active : styles.option}>
+                All
+        </button>
+        : null}
         </div>
          
 
