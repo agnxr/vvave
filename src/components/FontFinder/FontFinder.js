@@ -34,7 +34,8 @@ componentDidMount() {
     })
     .then(response => response.json() )
     .then(json => {
-        const fonts = json.items.slice(60,180);
+        const allFonts = json.items;
+        const fonts = allFonts.filter(item => item.category === "serif" || item.category === "sans-serif" ? item : null).slice(60,180);
         const randomFont = [fonts[Math.floor(Math.random()*fonts.length)]];
         /*fonts.map(font => ( 
                 
@@ -57,7 +58,7 @@ componentDidMount() {
             categorySelected: randomFont,
             fontFamilies: fonts.map(font => ( 
                 
-                <link href={`https://fonts.googleapis.com/css?family=${font.family}`} rel="stylesheet"></link>
+                <link href={`https://fonts.googleapis.com/css?family=${font.family.split(' ').join('+')}&display=swap`} rel="stylesheet"></link>
                // style={{@import url(`https://fonts.googleapis.com/css?family=${font.family}`)}}
     
                  )),
