@@ -5,6 +5,12 @@ import Loader from './Loader/Loader';
 import Info from './Info/Info';
 
 
+const clientID = zLixvs6LAu9YluVBoSHvBNqPDcMVYJAwQ2GLeg1FdP2aCh5RWTEyBzxdgEofsRv6;
+const clientSecret= XrWCPKlRz64QCYtPqaNO8GjrKMZhMPy5HgW52t60ZNuc2iL1GEOyO4sHWcYVHuif;
+
+
+https://api.iconfinder.com/v3/iconsets?client_id=zLixvs6LAu9YluVBoSHvBNqPDcMVYJAwQ2GLeg1FdP2aCh5RWTEyBzxdgEofsRv6&client_secret=XrWCPKlRz64QCYtPqaNO8GjrKMZhMPy5HgW52t60ZNuc2iL1GEOyO4sHWcYVHuif
+
 class FontFinder extends React.Component {
     state = {
         fonts: [],
