@@ -4,12 +4,9 @@ import styles from './FontFinder.module.scss';
 import Loader from './Loader/Loader';
 import Info from './Info/Info';
 import Button from './Button/Button';
-import styled from 'styled-components';
 
-const MyButton = styled.button`
-    border: 1px solid blue;
-    padding: 50px;
-`;
+
+
 
 
 class FontFinder extends React.Component {
@@ -45,6 +42,13 @@ componentDidMount() {
            // style={{@import url(`https://fonts.googleapis.com/css?family=${font.family}`)}}
 
              ))*/
+             /*
+             fonts.map(font => ( 
+                
+                document.getElementsByTagName('head')[0].appendChild(<link href={`https://fonts.googleapis.com/css?family=${font.family}`} rel="stylesheet"></link>)
+               // style={{@import url(`https://fonts.googleapis.com/css?family=${font.family}`)}}
+
+                 )) */
         this.setState({
             fonts: fonts,
             serif: fonts.filter(item => item.category === "serif" ? item : null),
@@ -101,7 +105,7 @@ handleShowRandomFont = (e) => {
 
 
 render(){
-const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLoaded, fontsAmount} = this.state;
+const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, fontsAmount} = this.state;
 
 
     return (
@@ -111,7 +115,7 @@ const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLo
             fontFamilies
         }
 <div>
-    <MyButton> this is my btn </MyButton>
+
   {  fontsAmount === null ?  <Loader /> : <Info info={fontsAmount} /> }
 
 

@@ -1,12 +1,26 @@
 import React from 'react';
 import styles from './Button.module.scss';
+import styled, {css} from 'styled-components';
 
-const Button = ({children, handleClickFn, category, whatToShow }) => (
-       <button 
+const Btn = styled.button`
+    padding: 20px;
+
+    ${({active}) => (
+        active && css `
+        border: 3px solid red;
+        `
+    )}
+`;
+
+
+
+const Button = ({children, handleClickFn, category, whatToShow}) => (
+       <Btn
             onClick={handleClickFn} 
-            className={category === whatToShow ? styles.active : styles.option}>
+           active={category === whatToShow ? true : false }
+            >
                 {children}
-        </button>
+        </Btn>
 
 )
 
