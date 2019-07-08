@@ -4,6 +4,13 @@ import styles from './FontFinder.module.scss';
 import Loader from './Loader/Loader';
 import Info from './Info/Info';
 import Button from './Button/Button';
+import styled from 'styled-components';
+
+const MyButton = styled.button`
+    border: 1px solid blue;
+    padding: 50px;
+`;
+
 
 class FontFinder extends React.Component {
     state = {
@@ -104,6 +111,7 @@ const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLo
             fontFamilies
         }
 <div>
+    <MyButton> this is my btn </MyButton>
   {  fontsAmount === null ?  <Loader /> : <Info info={fontsAmount} /> }
 
 
