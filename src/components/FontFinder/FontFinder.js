@@ -3,7 +3,7 @@ import Font from './Font/Font';
 import styles from './FontFinder.module.scss';
 import Loader from './Loader/Loader';
 import Info from './Info/Info';
-
+import Button from './Button/Button';
 
 class FontFinder extends React.Component {
     state = {
@@ -30,7 +30,7 @@ componentDidMount() {
     })
     .then(response => response.json() )
     .then(json => {
-        const fonts = json.items.slice(60,300);
+        const fonts = json.items.slice(60,180);
         const randomFont = [fonts[Math.floor(Math.random()*fonts.length)]];
         /*fonts.map(font => ( 
                 
@@ -112,27 +112,14 @@ const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLo
 
 
 { 
-    fontsAmount !== null ? <div className={styles.btn2} > 
-       
-       <button 
-            onClick={this.handleShowRandomFont} 
-            className={categorySelected === randomFont ? styles.active : styles.option}>
-                random font
-        </button>
-
-        <button onClick={this.handleSerifClick}
-        className={categorySelected === serif ? styles.active : styles.option}
-        >Serif only</button> 
-
-        <button onClick={this.handleSansSerifClick}
-        className={categorySelected === sansSerif ? styles.active : styles.option}
-        >sans-serif only</button>
-
-        <button 
-            onClick={this.handleShowAllClick} 
-            className={categorySelected === fonts ? styles.active : styles.option}>
-                All
-        </button>
+    fontsAmount !== null ? 
+    
+    <div className={styles.btn2} > 
+    
+       <Button category={ categorySelected } whatToShow={randomFont} handleClickFn={this.handleShowRandomFont}>random font</Button>
+       <Button category={ categorySelected } whatToShow={serif} handleClickFn={this.handleSerifClick}>serif only</Button>
+       <Button category={ categorySelected } whatToShow={sansSerif} handleClickFn={this.handleSansSerifClick}>sans-serif only</Button>
+       <Button category={ categorySelected } whatToShow={fonts} handleClickFn={this.handleShowAllClick}>all</Button>
         </div>
         :
         null 
