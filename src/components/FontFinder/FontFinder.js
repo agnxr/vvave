@@ -30,8 +30,8 @@ componentDidMount() {
     })
     .then(response => response.json() )
     .then(json => {
-        const fonts = json.items;
-        const randomFont = [json.items[Math.floor(Math.random()*fonts.length)]];
+        const fonts = json.items.slice(60,300);
+        const randomFont = [fonts[Math.floor(Math.random()*fonts.length)]];
         /*fonts.map(font => ( 
                 
             document.getElementsByTagName('head')[0].innerHTML = document.head.innerHTML + `<link href={https://fonts.googleapis.com/css?family=${font.family}} rel="stylesheet"></link>`
@@ -40,8 +40,8 @@ componentDidMount() {
              ))*/
         this.setState({
             fonts: fonts,
-            serif: json.items.filter(item => item.category === "serif" ? item : null),
-            sansSerif: json.items.filter(item => item.category === "sans-serif" ? item : null),
+            serif: fonts.filter(item => item.category === "serif" ? item : null),
+            sansSerif: fonts.filter(item => item.category === "sans-serif" ? item : null),
             randomFont: randomFont,
             categorySelected: randomFont,
             fontFamilies: fonts.map(font => ( 
@@ -59,14 +59,6 @@ componentDidMount() {
     .catch(error => this.setState({ error: `An error occured (${error})` }))
 }
 
-handleStartClick = (e) => {
-    e.preventDefault(e);
-
-    this.setState({ 
-        isLoaded: true,
-        isButtonVisible: false
-    })
-}
 
 handleSerifClick = (e) => {
     e.preventDefault(e);
@@ -102,7 +94,7 @@ handleShowRandomFont = (e) => {
 
 
 render(){
-const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLoaded, isButtonVisible, fontsAmount} = this.state;
+const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLoaded, fontsAmount} = this.state;
 
 
     return (
@@ -112,16 +104,15 @@ const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLo
             fontFamilies
         }
 <div>
-  <p>Available fonts: {  fontsAmount === null ?  <Loader /> : <Info info={fontsAmount} /> } </p>
+  {  fontsAmount === null ?  <Loader /> : <Info info={fontsAmount} /> }
 
 
-  
-            { isButtonVisible && fontsAmount !== null ? <button className={styles.btn} onClick={this.handleStartClick}>Lets get started</button> : null }
+
         </div>
 
 
 { 
-    isLoaded ? <div className={styles.btn2} > 
+    fontsAmount !== null ? <div className={styles.btn2} > 
        
        <button 
             onClick={this.handleShowRandomFont} 
@@ -151,7 +142,6 @@ const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLo
         <div>
             
             {       
-                isLoaded ?
                 categorySelected.map(font => (
                     <Font
                         key={font.family}
@@ -159,7 +149,7 @@ const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, isLo
                         category={font.category}
 
                     />
-                )) : null
+                )) 
             }
             </div>
         </>
