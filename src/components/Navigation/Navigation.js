@@ -1,14 +1,60 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from './Navigation.module.scss';
+import styled, {css} from 'styled-components';
+
+const StyledNavLink = styled(NavLink)`
+    color: #fff;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 60px;
+    background-color: #445bb7;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: #03175b;
+    }
+
+    &.active {
+        transition: 1s;
+        background-color: #030221;
+    }
+`;
+
+const StyledNavItem = styled.li`
+    display: inline-block;
+    margin-right: 50px;
+    list-style: none;
+    border-radius: 60px;
+    margin: 30px;
+    @media (max-width: 450px) {
+        margin: 60px;
+    }
+`;
+
 
 const Navigation = () => (
     <nav>
         <ul>
-            <li><NavLink exact activeClassName={styles.activeNavLink}  to="/images">Images</NavLink></li>
-            <li><NavLink exact activeClassName={styles.activeNavLink}  to="/fonts">Fonts</NavLink></li>
-            <li><NavLink exact activeClassName={styles.activeNavLink} to="/vectors">Vectors</NavLink></li>
-            <li><NavLink exact activeClassName={styles.activeNavLink}  to="/videos">Short videos</NavLink></li>
+            <StyledNavItem>
+                <StyledNavLink exact activeclass="active"  to="/images">
+                    Images
+                </StyledNavLink>
+            </StyledNavItem>
+            <StyledNavItem>
+                <StyledNavLink exact activeclass="active"  to="/fonts">
+                    Fonts
+                </StyledNavLink>
+            </StyledNavItem>
+            <StyledNavItem>
+                <StyledNavLink exact activeclass="active"  to="/vectors">
+                    Vectors
+                </StyledNavLink>
+            </StyledNavItem>
+            <StyledNavItem>
+                <StyledNavLink exact activeclass="active"  to="/videos">
+                    Short videos
+                </StyledNavLink>
+            </StyledNavItem>
         </ul>
     </nav>
 );
