@@ -26,9 +26,6 @@ const StyledNavItem = styled.li`
     list-style: none;
     border-radius: 60px;
     margin: 30px;
-    @media (max-width: 450px) {
-        margin: 60px;
-    }
 `;
 
 
