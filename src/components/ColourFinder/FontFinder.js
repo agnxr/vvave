@@ -9,7 +9,44 @@ const clientID = zLixvs6LAu9YluVBoSHvBNqPDcMVYJAwQ2GLeg1FdP2aCh5RWTEyBzxdgEofsRv
 const clientSecret= XrWCPKlRz64QCYtPqaNO8GjrKMZhMPy5HgW52t60ZNuc2iL1GEOyO4sHWcYVHuif;
 
 
+const apiKey = '1bc1ab5ca43212b65bbb8f5dca2e5e9862346da1';
+
+const Yelp = { 
+    searchYelp(term, location, sortBy) {
+        return fetch(`https://api.flaticon.com/v2/app/authentication`, { 
+            headers: {
+                Authorization: `Bearer ${apiKey}`
+                },
+            }).then((response) => { 
+            return response.json() ;
+        }).then((jsonResponse) => {
+            if (jsonResponse.businesses) {
+                return jsonResponse.businesses.map(((business) => {
+                    console.log(business);
+                    return {
+                    id: business.id,
+                    imageSrc: business.image_url,
+                    name: business.name,
+                    address: business.location.address1,
+                    city: business.location.city,
+                    state: business.location.state,
+                    zipCode: business.location.zip_code,
+                    category: business.categories[0].title,
+                    rating: business.rating,
+                    reviewCount: business.review_count
+                    };
+                }));
+            }
+        })
+    }
+};
+
+export default Yelp;
+
+
 https://api.iconfinder.com/v3/iconsets?client_id=zLixvs6LAu9YluVBoSHvBNqPDcMVYJAwQ2GLeg1FdP2aCh5RWTEyBzxdgEofsRv6&client_secret=XrWCPKlRz64QCYtPqaNO8GjrKMZhMPy5HgW52t60ZNuc2iL1GEOyO4sHWcYVHuif
+
+https://api.dribbble.com/v2/user/shots?access_token=b5cb844bdd2cfc34ae3b1a569cec308db6b1333d9e512f5c9f37626370775103
 
 class FontFinder extends React.Component {
     state = {
@@ -27,7 +64,7 @@ class FontFinder extends React.Component {
 
 
 componentDidMount() {
-    fetch(`https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDR7baDJT2PMQ-FuyAZHCYNQS93yy6n2Ms`)
+    fetch(`https://api.dribbble.com/v2/user/shots?access_token=b5cb844bdd2cfc34ae3b1a569cec308db6b1333d9e512f5c9f37626370775103`)
     .then(response => {
         if(response.ok){
             return response;
