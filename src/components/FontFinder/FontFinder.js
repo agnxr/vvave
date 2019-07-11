@@ -6,9 +6,6 @@ import Info from './Info/Info';
 import Button from './Button/Button';
 
 
-
-
-
 class FontFinder extends React.Component {
     state = {
         fonts: [],
@@ -21,7 +18,6 @@ class FontFinder extends React.Component {
         isButtonVisible: true,
         fontsAmount: null,
     }
-
 
 
 componentDidMount() {

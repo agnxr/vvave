@@ -8,6 +8,8 @@ import VectorsView from '../VectorsView/VectorsView';
 import VideosView from '../VideosView/VideosView';
 import Navigation from '../../components/Navigation/Navigation';
 import GlobalStyle from '../../theme/GlobalStyle';
+import { theme } from '../../theme/mainTheme';
+
 import video from '../../assets/blue.mp4';
 import logo from '../../assets/logo.svg';
 import pointer from '../../assets/pointer.svg';
