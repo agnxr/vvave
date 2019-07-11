@@ -11,6 +11,7 @@ import GlobalStyle from '../../theme/GlobalStyle';
 import video from '../../assets/blue.mp4';
 import logo from '../../assets/logo.svg';
 import pointer from '../../assets/pointer.svg';
+import background from '../../assets/fallback.png';
 
 import styled, {css} from 'styled-components';
 
@@ -19,6 +20,7 @@ const StyledHeader = styled.header`
     height: 520px;
     overflow:hidden;
     background-color: #000;
+    background-image: url(${background});
     animation: slidein 1.5s ease-out;
 
     @keyframes slidein {
@@ -49,11 +51,10 @@ const StyledTopBar = styled.section`
   background-color: #000;
   color: #fff;
   display: flex;
-
-align-items: center;
-text-align: center;
-letter-spacing: 3px;
-font-size: 13px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 13px;
 `;
 
 const StyledLogo = styled.img`
@@ -85,19 +86,13 @@ const StyledCategories = styled.section`
   border-top: 3px solid #020007;
   background-color: #fff;
   padding: 20px;
-  
   letter-spacing: 3px;
-
+  color: #020007;
   display: flex;
-color: #020007;
-
-align-items: center;
-text-align: center;
-
+  align-items: center;
+  text-align: center;
   flex-direction: column;
-
 `;
-
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -126,6 +121,7 @@ class Root extends React.Component {
               </StyledContent>
               <video autoplay="autoplay" muted="muted" loop="loop" width="100%">
                 <source src={video} type="video/mp4"/>
+                <img src={background} title="Your browser does not support the <video> tag" />
               </video>
             </section>
           </StyledHeader>
