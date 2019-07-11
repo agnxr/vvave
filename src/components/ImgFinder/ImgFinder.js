@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './Form/Form';
 import Button from './Button/Button';
 import ImgList from './ImgList/ImgList';
-
+import Loader from './../Loader/Loader';
 
 class ImgFinder extends React.Component {
     state = {
@@ -11,12 +11,11 @@ class ImgFinder extends React.Component {
         error: null,
         numberOfResults: 10,
         isButtonVisible: false,
+        showLoader: false,
     }
 
 
     handleChange = (e) => {
-        e.preventDefault();
-
         this.setState({ 
             term: e.target.value
         });
@@ -38,7 +37,8 @@ class ImgFinder extends React.Component {
             this.setState({
                 allImages: allImages,
                 images: allImages.slice(0,this.state.numberOfResults),
-                isButtonVisible: true
+                isButtonVisible: true,
+                showLoader: true,
             })
         } )
         .catch(error => this.setState({ error: `An error occured (${error})` }))
@@ -50,13 +50,22 @@ class ImgFinder extends React.Component {
 
         this.setState({ 
             images: this.state.allImages.slice(0, this.state.allImages.length),
-            isButtonVisible: false
+            isButtonVisible: false,
         })
     } 
 
 
+
+    componentDidUpdate() {
+        if (this.state.showLoader === true) {
+          setTimeout(() => this.setState({
+            showLoader: false
+          }), 1000)
+        }
+      }
+
     render(){
-        const { images, isButtonVisible } = this.state;
+        const { images, isButtonVisible, showLoader } = this.state;
 
         return (
             <>
@@ -65,11 +74,13 @@ class ImgFinder extends React.Component {
                     handleChangeFn={this.handleChange} 
                     handleSearchFn={this.handleSearch}
                 />
+            { showLoader ? <Loader /> : null }
                 <ul>
                     <ImgList 
                         images={images}
                     />
                 </ul>
+
                 {images.length < 1 && isButtonVisible ? <p>no results</p> : null }
                 {images.length > 1 && isButtonVisible ? <Button showAllFn={this.handleShowAll} /> : null }
             </>
