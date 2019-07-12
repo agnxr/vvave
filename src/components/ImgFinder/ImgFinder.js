@@ -13,11 +13,9 @@ class ImgFinder extends React.Component {
         allImages: [],
         selectedImages: [],
         error: null,
-        start: 0,
         numberOfResults: 3,
-        isButtonVisible: false,
         showLoader: false,
-        items: Array.from({ length: 20 })
+        noResults: false,
     }
 
     handleChange = (e) => {
@@ -42,21 +40,11 @@ class ImgFinder extends React.Component {
                 allImages: allImages,
                 selectedImages: allImages.slice(0, this.state.numberOfResults),
                 showLoader: true,
+                noResults: allImages.length < 1 ? true : false,
             })
         } )
         .catch(error => this.setState({ error: `An error occured` }))
     }
-
-
-    handleShowAll = (e) => {
-        e.preventDefault(e);
-
-        this.setState({ 
-            start: this.state.selectedImages.length,
-            selectedImages: this.state.allImages.slice(this.state.start, this.state.allImages.length),
-            isButtonVisible: false,
-        })
-    } 
 
 
     fetchMoreData = () => {
@@ -66,16 +54,10 @@ class ImgFinder extends React.Component {
           this.setState(prevState =>({
             numberOfResults: prevState.numberOfResults + 3,
             selectedImages:  this.state.allImages.slice(0, prevState.numberOfResults + 3),
-
           }));
         }, 1500);
 
       };
-/*
-      this.setState(prevState => ({
-        items: [newItem, ...prevState.items],
-        message: 'The new user has been added successfully.',
-      })); */
 
 
     componentDidUpdate() {
@@ -87,7 +69,7 @@ class ImgFinder extends React.Component {
       }
 
     render(){
-        const { error, selectedImages, isButtonVisible, showLoader, allImages } = this.state;
+        const { error, selectedImages, showLoader, allImages, noResults } = this.state;
 
         return (
             <>
@@ -118,7 +100,7 @@ class ImgFinder extends React.Component {
             }
       
 
-                {selectedImages.length < 1 && isButtonVisible ? <p>no results</p> : null }
+                { noResults ? <p>no results</p> : null }
             </>
         );
     }
