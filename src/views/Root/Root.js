@@ -31,6 +31,7 @@ const StyledHeader = styled.header`
     }
 `;
 
+
 const StyledContent = styled.div`
   /* background: rgba(0, 0, 0, 0.5); */
   height: 480px;
@@ -117,7 +118,7 @@ class Root extends React.Component {
                 <p>vvave | Inspire yourself | Everything you need in one place</p>
               </StyledTopBar>
               <StyledContent>
-                <StyledTitle>Find materials to your project</StyledTitle>
+                <StyledTitle>Find materials for your project</StyledTitle>
                 <p>everything you need in one place</p>
                 <StyledLink to="/#navigation"><img width="40" height="40" alt="" src={pointer}/></StyledLink>
               </StyledContent>

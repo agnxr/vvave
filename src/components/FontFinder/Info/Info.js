@@ -1,8 +1,31 @@
 import React from 'react';
-import styles from './Info.module.scss';
+import styled, {css} from 'styled-components';
+
+
+const StyledInfo = styled.div`
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #030221;
+    opacity:0;
+    animation: slidein 1s ease-out forwards;
+  
+    @keyframes slidein {
+        0% { opacity:0; }
+        100% { opacity:1; }
+    }
+`;
+
+const StyledNumber = styled.span`
+    color: #445bb7;
+    font-weight: bold;
+`;
 
 const Info = ({info}) => (
-<p>Available fonts: <span className={styles.info}> {info} </span> </p>
+    <StyledInfo>
+        <p>Available fonts: 
+            <StyledNumber> {info} </StyledNumber> 
+        </p>
+    </StyledInfo>
 )
 
 export default Info;

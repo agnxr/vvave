@@ -1,7 +1,6 @@
 import React from 'react';
 import Font from './Font/Font';
-import styles from './FontFinder.module.scss';
-import Loader from './Loader/Loader';
+import Loader from './../Loader/Loader';
 import Info from './Info/Info';
 import Button from './Button/Button';
 
@@ -33,19 +32,7 @@ componentDidMount() {
         const allFonts = json.items;
         const fonts = allFonts.filter(item => item.category === "serif" || item.category === "sans-serif" ? item : null).slice(60,180);
         const randomFont = [fonts[Math.floor(Math.random()*fonts.length)]];
-        /*fonts.map(font => ( 
-                
-            document.getElementsByTagName('head')[0].innerHTML = document.head.innerHTML + `<link href={https://fonts.googleapis.com/css?family=${font.family}} rel="stylesheet"></link>`
-           // style={{@import url(`https://fonts.googleapis.com/css?family=${font.family}`)}}
 
-             ))*/
-             /*
-             fonts.map(font => ( 
-                
-                document.getElementsByTagName('head')[0].appendChild(<link href={`https://fonts.googleapis.com/css?family=${font.family}`} rel="stylesheet"></link>)
-               // style={{@import url(`https://fonts.googleapis.com/css?family=${font.family}`)}}
-
-                 )) */
         this.setState({
             fonts: fonts,
             serif: fonts.filter(item => item.category === "serif" ? item : null),
@@ -102,28 +89,22 @@ handleShowRandomFont = (e) => {
 
 
 render(){
-const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, fontsAmount} = this.state;
-
+    const {categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, fontsAmount} = this.state;
 
     return (
         <>
-        { 
-        
-            fontFamilies
-        }
-<div>
-
-  {  fontsAmount === null ?  <Loader /> : <Info info={fontsAmount} /> }
-
-
-
-        </div>
+            {        
+                fontFamilies
+            }
+            <div>
+                {  fontsAmount === null ?  <Loader /> : <Info info={fontsAmount} /> }
+            </div>
 
 
 { 
     fontsAmount !== null ? 
     
-    <div className={styles.btn2} > 
+    <div> 
     
        <Button category={ categorySelected } whatToShow={randomFont} handleClickFn={this.handleShowRandomFont}>random font</Button>
        <Button category={ categorySelected } whatToShow={serif} handleClickFn={this.handleSerifClick}>serif only</Button>
