@@ -4,6 +4,16 @@ import Form from './Form/Form';
 import ImgList from './ImgList/ImgList';
 import Loader from './../Loader/Loader';
 
+import styled, {css} from 'styled-components';
+
+const StyledListSection = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  overflow: hidden;
+`;
+
 class ImgFinder extends React.Component {
     state = {
         term: null,
@@ -68,30 +78,27 @@ class ImgFinder extends React.Component {
         return (
             <>
                 <p>{error}</p>
-        
+
                 <Form 
                     handleChangeFn={this.handleChange} 
                     handleSearchFn={this.handleSearch}
                 />
-                { 
-                    showLoader ? 
-                    <Loader /> 
-                    :  
-                    <InfiniteScroll
-                        dataLength={selectedImages.length}
-                        next={this.fetchMoreData}
-                        hasMore={selectedImages.length !== allImages.length ? true : false}
-                        loader={<Loader />} 
-                    >
-                        <ul>
-                            <ImgList 
-                                images={selectedImages}
-                            />
-                        </ul>         
-                    </InfiniteScroll>
-                }
-                
-                { noResults ? <p>no results</p> : null }
+                <StyledListSection>
+                    { 
+                        showLoader ? 
+                        <Loader /> 
+                        :  
+                        <InfiniteScroll style={{overflow:'hidden'}}
+                            dataLength={selectedImages.length}
+                            next={this.fetchMoreData}
+                            hasMore={selectedImages.length !== allImages.length ? true : false}
+                            loader={<Loader />} 
+                        >
+                            <ImgList images={selectedImages} />        
+                        </InfiniteScroll>
+                    }
+                </StyledListSection>
+                { noResults && !showLoader ? <p>no results</p> : null }
             </>
         );
     }
