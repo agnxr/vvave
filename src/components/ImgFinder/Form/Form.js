@@ -17,6 +17,7 @@ const StyledSubmit = styled.input`
   background-position: 9px 9px;
   width: 65px;
   font-size: 20px;
+  margin-bottom: 50px;
   transition: 1s;
     &:hover {
         background-color: #030221;
@@ -35,6 +36,7 @@ const StyledInput = styled.input`
   width: 30vw;
   color: #6070c4;
   font-size: 20px;
+  margin-bottom: 50px;
     ::placeholder {
         color: #6070c4;
         opacity: 0.5; 

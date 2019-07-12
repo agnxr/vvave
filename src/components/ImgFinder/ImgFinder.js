@@ -1,11 +1,8 @@
 import React from 'react';
+import InfiniteScroll from "react-infinite-scroll-component";
 import Form from './Form/Form';
 import ImgList from './ImgList/ImgList';
 import Loader from './../Loader/Loader';
-
-import InfiniteScroll from "react-infinite-scroll-component";
-
-
 
 class ImgFinder extends React.Component {
     state = {
@@ -48,17 +45,13 @@ class ImgFinder extends React.Component {
 
 
     fetchMoreData = () => {
-        // a fake async api call like which sends
-        // 20 more records in 1.5 secs
         setTimeout(() => {
           this.setState(prevState =>({
             numberOfResults: prevState.numberOfResults + 3,
             selectedImages:  this.state.allImages.slice(0, prevState.numberOfResults + 3),
           }));
         }, 1500);
-
-      };
-
+    };
 
     componentDidUpdate() {
         if (this.state.showLoader === true) {
@@ -66,40 +59,38 @@ class ImgFinder extends React.Component {
             showLoader: false
           }), 1000)
         }
-      }
+    }
 
     render(){
+
         const { error, selectedImages, showLoader, allImages, noResults } = this.state;
 
         return (
             <>
-            <p>{error}</p>
-           
+                <p>{error}</p>
+        
                 <Form 
                     handleChangeFn={this.handleChange} 
                     handleSearchFn={this.handleSearch}
                 />
+                { 
+                    showLoader ? 
+                    <Loader /> 
+                    :  
+                    <InfiniteScroll
+                        dataLength={selectedImages.length}
+                        next={this.fetchMoreData}
+                        hasMore={selectedImages.length !== allImages.length ? true : false}
+                        loader={<Loader />} 
+                    >
+                        <ul>
+                            <ImgList 
+                                images={selectedImages}
+                            />
+                        </ul>         
+                    </InfiniteScroll>
+                }
                 
-            { showLoader ? <Loader /> :  
-
-            <InfiniteScroll
-          dataLength={selectedImages.length}
-          next={this.fetchMoreData}
-          hasMore={selectedImages.length !== allImages.length ? true : false}
-          loader={<Loader />}
-        >
-     
-
-        <ul>
-                    <ImgList 
-                        images={selectedImages}
-                    />
-                </ul>
-          
-        </InfiniteScroll>
-            }
-      
-
                 { noResults ? <p>no results</p> : null }
             </>
         );
