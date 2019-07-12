@@ -5,10 +5,11 @@ import styled, {css} from 'styled-components';
 const StyledImgList = styled.ul`
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+
+
   animation: slidein 2s ease-out forwards;
   
   @keyframes slidein{
@@ -23,7 +24,7 @@ const ImgList = ({ images }) => (
   <StyledImgList>
     {
       images.map(img => (
-        <Img key={img.id} src={img.previewURL} url={img.largeImageURL} download={img.largeImageURL}/>
+        <Img key={img.id} src={img.webformatURL} url={img.largeImageURL} download={img.largeImageURL}/>
       ))
     }
   </StyledImgList>

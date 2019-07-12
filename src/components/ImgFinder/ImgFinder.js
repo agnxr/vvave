@@ -10,7 +10,6 @@ const StyledListSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80vw;
   overflow: hidden;
 `;
 

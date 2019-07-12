@@ -1,13 +1,17 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 
-const StyledImg = styled.li`
+const StyledListItem = styled.li`
   animation: slidein 1.5s ease-out forwards;
-  flex: 1 30%;
-  border: 1px solid red;
-  width: 400px;
-  height: 400px;
-  
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  margin: 20px;
+
   @keyframes slidein{
     0%{ opacity:0; }
     100%{ opacity:1; }
@@ -15,15 +19,16 @@ const StyledImg = styled.li`
 
 `;
 
+const StyledImg = styled.img`
+    width: 400px;
+`;
 
 const Img = props => (
-    <StyledImg>
-    
+    <StyledListItem>
         <a target="_blank" href={props.url} >
-            <img src={props.src} alt={props.alt}/>
+            <StyledImg src={props.src} alt={props.alt}/>
         </a>
-        <a href={props.download} download={props.download}>download</a> 
-    </StyledImg>
+    </StyledListItem>
 )
 
 export default Img;
