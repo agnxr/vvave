@@ -8,15 +8,12 @@ const StyledImgList = styled.ul`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-
-
   animation: slidein 2s ease-out forwards;
   
   @keyframes slidein{
     0%{ opacity:0; }
     100%{ opacity:1; }
   }
-
 `;
 
 
