@@ -4,7 +4,6 @@ import styled, {css} from 'styled-components';
 
 const StyledInfo = styled.div`
     padding: 20px;
-    margin-bottom: 20px;
     color: #030221;
     opacity:0;
     animation: slidein 1s ease-out forwards;

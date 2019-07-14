@@ -2,15 +2,16 @@ import React from 'react';
 import styles from './Button.module.scss';
 import styled, {css} from 'styled-components';
 
-const Btn = styled.button`
+const StyledBtn = styled.button`
     padding: 20px;
     border: 1px solid #03175b;
     background-color: #fff;
     margin: 20px;
-    margin-top: 10px;
+    margin-top: -10px;
     border-radius: 25px;
     letter-spacing: 3px;
     font-family: "Montserrat", sans-serif;
+    cursor: pointer;
 
     ${({active}) => (
         active && css `
@@ -21,12 +22,12 @@ const Btn = styled.button`
 
 
 const Button = ({children, handleClickFn, category, whatToShow}) => (
-       <Btn
+       <StyledBtn
             onClick={handleClickFn} 
-           active={category === whatToShow ? true : false }
-            >
-                {children}
-        </Btn>
+            active={category === whatToShow ? true : false }
+        >
+            {children}
+        </StyledBtn>
 
 )
 

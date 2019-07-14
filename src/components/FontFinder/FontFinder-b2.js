@@ -46,8 +46,8 @@ componentDidMount() {
             allSerif: fonts.filter(item => item.category === "serif" ? item : null),
             allSansSerif: fonts.filter(item => item.category === "sans-serif" ? item : null),
             fonts: this.state.allFonts.slice(0, this.state.results),
-            serif: this.state.allSerif.slice(0, this.state.results),
-            sansSerif: this.state.allSansSerif.slice(0, this.state.results),
+            serif: fonts.filter(item => item.category === "serif" ? item : null).slice(0, this.state.results),
+            sansSerif: fonts.filter(item => item.category === "sans-serif" ? item : null).slice(0, this.state.results),
             randomFont: randomFont,
             categorySelected: randomFont,
             fontFamilies: fonts.map(font => ( 
@@ -71,7 +71,7 @@ handleSerifClick = (e) => {
 
     this.setState({ 
         categorySelected: this.state.serif,
-        //results: 0
+        results: 0
     })
 }
 
@@ -103,21 +103,20 @@ handleShowRandomFont = (e) => {
 }
 
 
-fetchMoreData = (categorySelected) => {
+fetchMoreData = () => {
+
+
 
     setTimeout(() => {
       this.setState(prevState =>({
         //  selectItems: this.state.items.slice(0,6),
-        results: prevState.results + 1,
-        [categorySelected] : this.state.allFonts.slice(0, prevState.results + 3),
-        fonts:  categorySelected === this.state.fonts ? this.state.allFonts.slice(0, prevState.results + 1) : this.state.fonts,
-        serif:  categorySelected === this.state.serif ? this.state.allSerif.slice(0, prevState.results + 3) : this.state.serif,
-        sansSerif:  categorySelected === this.state.sansSerif ? this.state.allSansSerif.slice(0, prevState.results + 3) : this.state.sansSerif,
-        randomFont: categorySelected === this.state.randomFont ? this.state.randomFont : this.state.randomFont,
+        results: prevState.results + 3,
+        fonts:  this.state.allFonts.slice(0, prevState.results + 3),
+       // serif:  this.state.allSerif.slice(0, prevState.results + 3),
+       // sansSerif:  this.state.allSansSerif.slice(0, prevState.results + 3),
       }));
     }, 500);
 };
-
 
 
 render(){
@@ -150,10 +149,9 @@ render(){
          
 
         <div>
-   
         <InfiniteScroll style={{overflow:'hidden'}}
                             dataLength={fonts.length}
-                            next={this.fetchMoreData(fonts)}
+                            next={this.fetchMoreData}
                             hasMore={true}
                             loader={<Loader />} 
                         >

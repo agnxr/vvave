@@ -21,7 +21,7 @@ class FontFinder extends React.Component {
         isLoaded: false,
         isButtonVisible: true,
         fontsAmount: null,
-        results: 0,
+        results: 3,
         hasMore: true,
         items: [],
         selectItems: [],
@@ -108,9 +108,9 @@ fetchMoreData = (categorySelected) => {
     setTimeout(() => {
       this.setState(prevState =>({
         //  selectItems: this.state.items.slice(0,6),
-        results: prevState.results + 1,
+        results: prevState.results + 3,
         [categorySelected] : this.state.allFonts.slice(0, prevState.results + 3),
-        fonts:  categorySelected === this.state.fonts ? this.state.allFonts.slice(0, prevState.results + 1) : this.state.fonts,
+        fonts:  categorySelected === this.state.fonts ? this.state.allFonts.slice(0, prevState.results + 3) : this.state.fonts,
         serif:  categorySelected === this.state.serif ? this.state.allSerif.slice(0, prevState.results + 3) : this.state.serif,
         sansSerif:  categorySelected === this.state.sansSerif ? this.state.allSansSerif.slice(0, prevState.results + 3) : this.state.sansSerif,
         randomFont: categorySelected === this.state.randomFont ? this.state.randomFont : this.state.randomFont,
