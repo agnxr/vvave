@@ -15,7 +15,7 @@ class FontFinder extends React.Component {
         fonts: [],
         serif: [],
         sansSerif: [],
-        categorySelected: [],
+
         randomFont: [],
         fontFamilies: [],
         isLoaded: false,
@@ -28,6 +28,7 @@ class FontFinder extends React.Component {
         showLoader: false,
         isSerif: false,
         test: [],
+        categorySelected: [],
     }
 
 
@@ -54,7 +55,7 @@ componentDidMount() {
             serif: this.state.allSerif.slice(0, this.state.results),
             sansSerif: this.state.allSansSerif.slice(0, this.state.results),
             randomFont: randomFont,
-            categorySelected: randomFont,
+            categorySelected: this.state.test,
             fontFamilies: fonts.map(font => ( 
                 
                 <link href={`https://fonts.googleapis.com/css?family=${font.family.split(' ').join('+')}&display=swap`} rel="stylesheet"></link>
@@ -114,6 +115,7 @@ showSerif = (e) => {
     this.setState({ 
         fonts: this.state.allFonts.slice(0, 0),
         allFonts: this.state.allSerif,
+        categorySelected: this.state.serif,
         //showLoader: true,
     })
 
@@ -125,6 +127,7 @@ showSansSerif = (e) => {
     this.setState({ 
         fonts: this.state.allFonts.slice(0, 0),
         allFonts: this.state.allSansSerif,
+        categorySelected: this.state.sansSerif,
         //showLoader: true,
     })
 
@@ -136,11 +139,24 @@ showAll = (e) => {
     this.setState({ 
         fonts: this.state.allFonts.slice(0, 0),
         allFonts: this.state.test,
+        categorySelected: this.state.test,
         
         //showLoader: true,
     })
 }
 
+
+showRandom = (e) => {
+    e.preventDefault(e);
+
+    this.setState({ 
+        fonts: this.state.allFonts.slice(0, 0),
+        allFonts: this.state.randomFont,
+        categorySelected: this.state.randomFont,
+        
+        //showLoader: true,
+    })
+}
 
 fetchMoreData = () => {
 
@@ -157,7 +173,7 @@ fetchMoreData = () => {
 
 
 render(){
-    const {error, isSerif, showLoader, categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, fontsAmount} = this.state;
+    const {error, isSerif, test, showLoader, categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, fontsAmount} = this.state;
 
     return (
         <>
@@ -174,10 +190,12 @@ render(){
     
     <div> 
     
-       <Button category={ categorySelected } whatToShow={randomFont} handleClickFn={this.handleShowRandomFont}>random font</Button>
-       <Button category={ categorySelected } whatToShow={serif} handleClickFn={this.handleSerifClick}>serif only</Button>
-       <Button category={ categorySelected } whatToShow={sansSerif} handleClickFn={this.handleSansSerifClick}>sans-serif only</Button>
-       <Button category={ categorySelected } whatToShow={fonts} handleClickFn={this.handleShowAllClick}>all</Button>
+   
+    <Button category={ categorySelected } whatToShow={test} handleClickFn={this.showAll}>all</Button>
+       <Button category={ categorySelected } whatToShow={serif} handleClickFn={this.showSerif}>serif only</Button>
+       <Button category={ categorySelected } whatToShow={sansSerif} handleClickFn={this.showSansSerif}>sans-serif only</Button>
+       <Button category={ categorySelected } whatToShow={randomFont} handleClickFn={this.showRandom}>random font</Button>
+
         </div>
         :
         null 
@@ -185,10 +203,6 @@ render(){
          
 
         <div>
-
-        <button onClick={this.showAll}>all</button>
-        <button onClick={this.showSansSerif}>tylko bez-serif</button>
-   <button onClick={this.showSerif}>tylko serif</button>
  
    <div>
     {showLoader ? <Loader /> : null}
