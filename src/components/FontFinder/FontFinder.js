@@ -55,7 +55,7 @@ componentDidMount() {
             serif: this.state.allSerif.slice(0, this.state.results),
             sansSerif: this.state.allSansSerif.slice(0, this.state.results),
             randomFont: randomFont,
-            categorySelected: this.state.test,
+            categorySelected: fonts,
             fontFamilies: fonts.map(font => ( 
                 
                 <link href={`https://fonts.googleapis.com/css?family=${font.family.split(' ').join('+')}&display=swap`} rel="stylesheet"></link>
