@@ -25,7 +25,11 @@ class FontFinder extends React.Component {
         hasMore: true,
         items: [],
         selectItems: [],
+        showLoader: false,
+        isSerif: false,
+        test: [],
     }
+
 
 
 componentDidMount() {
@@ -38,10 +42,11 @@ componentDidMount() {
     .then(response => response.json() )
     .then(json => {
         const allFonts = json.items;
-        const fonts = allFonts.filter(item => item.category === "serif" || item.category === "sans-serif" ? item : null);
+        const fonts = allFonts.filter(item => item.category === "serif" || item.category === "sans-serif" ? item : null).slice(0,10);
         const randomFont = [fonts[Math.floor(Math.random()*fonts.length)]];
 
         this.setState({
+            test: fonts,
             allFonts: fonts,
             allSerif: fonts.filter(item => item.category === "serif" ? item : null),
             allSansSerif: fonts.filter(item => item.category === "sans-serif" ? item : null),
@@ -103,17 +108,48 @@ handleShowRandomFont = (e) => {
 }
 
 
-fetchMoreData = (categorySelected) => {
+showSerif = (e) => {
+    e.preventDefault(e);
+
+    this.setState({ 
+        fonts: this.state.allFonts.slice(0, 0),
+        allFonts: this.state.allSerif,
+        //showLoader: true,
+    })
+
+}
+
+showSansSerif = (e) => {
+    e.preventDefault(e);
+
+    this.setState({ 
+        fonts: this.state.allFonts.slice(0, 0),
+        allFonts: this.state.allSansSerif,
+        //showLoader: true,
+    })
+
+}
+
+showAll = (e) => {
+    e.preventDefault(e);
+
+    this.setState({ 
+        fonts: this.state.allFonts.slice(0, 0),
+        allFonts: this.state.test,
+        
+        //showLoader: true,
+    })
+}
+
+
+fetchMoreData = () => {
 
     setTimeout(() => {
       this.setState(prevState =>({
         //  selectItems: this.state.items.slice(0,6),
         results: prevState.results + 1,
-        [categorySelected] : this.state.allFonts.slice(0, prevState.results + 3),
-        fonts:  categorySelected === this.state.fonts ? this.state.allFonts.slice(0, prevState.results + 1) : this.state.fonts,
-        serif:  categorySelected === this.state.serif ? this.state.allSerif.slice(0, prevState.results + 3) : this.state.serif,
-        sansSerif:  categorySelected === this.state.sansSerif ? this.state.allSansSerif.slice(0, prevState.results + 3) : this.state.sansSerif,
-        randomFont: categorySelected === this.state.randomFont ? this.state.randomFont : this.state.randomFont,
+        fonts:  this.state.allFonts.slice(0, prevState.results + 1),
+        
       }));
     }, 500);
 };
@@ -121,7 +157,7 @@ fetchMoreData = (categorySelected) => {
 
 
 render(){
-    const {error, categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, fontsAmount} = this.state;
+    const {error, isSerif, showLoader, categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, fontsAmount} = this.state;
 
     return (
         <>
@@ -132,7 +168,6 @@ render(){
                 {  fontsAmount === null ?  <Loader /> : <Info info={fontsAmount} /> }
             </div>
             <p>{error}</p>
-
 
 { 
     fontsAmount !== null ? 
@@ -150,10 +185,17 @@ render(){
          
 
         <div>
-   
-        <InfiniteScroll style={{overflow:'hidden'}}
+
+        <button onClick={this.showAll}>all</button>
+        <button onClick={this.showSansSerif}>tylko bez-serif</button>
+   <button onClick={this.showSerif}>tylko serif</button>
+ 
+   <div>
+    {showLoader ? <Loader /> : null}
+</div>
+<InfiniteScroll style={{overflow:'hidden'}}
                             dataLength={fonts.length}
-                            next={this.fetchMoreData(fonts)}
+                            next={this.fetchMoreData}
                             hasMore={true}
                             loader={<Loader />} 
                         >
@@ -167,7 +209,8 @@ render(){
                     />
                 )) 
             } 
-                        </InfiniteScroll>
+                        </InfiniteScroll> 
+
 
             
 
