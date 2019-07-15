@@ -18,17 +18,16 @@ class FontFinder extends React.Component {
 
         randomFont: [],
         fontFamilies: [],
-        isLoaded: false,
-        isButtonVisible: true,
+
         fontsAmount: null,
-        results: 0,
-        items: [],
-        selectItems: [],
+        results: 1,
+
+
         showLoader: false,
-        isSerif: false,
+     
         test: [],
         categorySelected: [],
-        hasMore: true
+        hasMore: false
     }
 
 
@@ -55,7 +54,7 @@ componentDidMount() {
             serif: this.state.allSerif.slice(0, this.state.results),
             sansSerif: this.state.allSansSerif.slice(0, this.state.results),
             randomFont: randomFont,
-            categorySelected: fonts,
+           // categorySelected: fonts,
             fontFamilies: fonts.map(font => ( 
                 
                 <link href={`https://fonts.googleapis.com/css?family=${font.family.split(' ').join('+')}&display=swap`} rel="stylesheet"></link>
@@ -81,6 +80,7 @@ showSerif = (e) => {
         hasMore: true,
         allFonts: this.state.allSerif,
         categorySelected: this.state.serif,
+        results: 0,
         //showLoader: true,
     })
 
@@ -94,6 +94,7 @@ showSansSerif = (e) => {
         hasMore: true,
         allFonts: this.state.allSansSerif,
         categorySelected: this.state.sansSerif,
+        results: 0,
         //showLoader: true,
     })
 
@@ -107,6 +108,7 @@ showAll = (e) => {
         hasMore: true,
         allFonts: this.state.test,
         categorySelected: this.state.test,
+        results: 0,
         
         //showLoader: true,
     })
@@ -121,6 +123,7 @@ showRandom = (e) => {
         hasMore: true, 
         allFonts: this.state.randomFont,
         categorySelected: this.state.randomFont,
+        results: 0,
         
         //showLoader: true,
     })
@@ -138,7 +141,7 @@ fetchMoreData = () => {
       this.setState(prevState =>({
         //  selectItems: this.state.items.slice(0,6),
         results: prevState.results + 1,
-        fonts:  this.state.allFonts.slice(0, prevState.results + 1),
+        fonts:  this.state.allFonts.slice(0, prevState.results + 3),
         
       }));
     }, 500);
@@ -147,7 +150,8 @@ fetchMoreData = () => {
 
 
 render(){
-    const {error, isSerif, test, showLoader, categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, fontsAmount} = this.state;
+    const {error, test, showLoader, categorySelected, fonts, serif, sansSerif, fontFamilies, randomFont, fontsAmount} = this.state;
+    
 
     return (
         <>
