@@ -168,7 +168,12 @@ render(){
     
     <div> 
     
-   
+                       <Font
+                        key={'elo'}
+                        fontFamily={'AzZz'}
+                        category={'serif'}
+
+                    />
     <Button category={ categorySelected } whatToShow={test} handleClickFn={this.showAll}>all</Button>
        <Button category={ categorySelected } whatToShow={serif} handleClickFn={this.showSerif}>serif only</Button>
        <Button category={ categorySelected } whatToShow={sansSerif} handleClickFn={this.showSansSerif}>sans-serif only</Button>
