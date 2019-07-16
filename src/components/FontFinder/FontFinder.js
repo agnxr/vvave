@@ -10,6 +10,7 @@ import styled, {css} from 'styled-components';
 
 const StyledScroll = styled(InfiniteScroll)`
     display: flex;
+
     justify-content: center;
     align-items: center;
 
@@ -194,6 +195,7 @@ render(){
    <div>
     {showLoader ? <Loader /> : null}
 </div>
+
 
 <StyledScroll style={{overflow:'hidden'}}
                             dataLength={fonts.length}
