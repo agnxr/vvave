@@ -5,6 +5,10 @@ import Collapsible from './Collapsible/Collapsible';
 const StyledFontFamily = styled.div`
   font-size: 60px;
   padding: 20px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #f9f9f9;
   overflow: hidden;
     ::-webkit-scrollbar {
@@ -31,6 +35,9 @@ const StyledFontFamily = styled.div`
 const StyledFont = styled.div`
     background-color: #F5F5F5;
     width: 500px;
+    min-height: 620px;
+
+
     padding: 50px 70px;
     background-color: white;
     box-shadow: 0 18px 32px -5px #606060;
@@ -48,7 +55,11 @@ const StyledTitle = styled.span`
 const StyledSpan = styled.span`
     padding: 10px;
     width: 100%;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    height: 80px;
     background-color: #f9f9f9;
     margin: 10px;
 `;
