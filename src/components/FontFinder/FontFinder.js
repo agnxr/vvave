@@ -64,7 +64,7 @@ componentDidMount() {
             serif: this.state.allSerif.slice(0, this.state.results),
             sansSerif: this.state.allSansSerif.slice(0, this.state.results),
             randomFont: randomFont,
-           // categorySelected: fonts,
+            categorySelected: randomFont,
             fontFamilies: fonts.map(font => ( 
                 
                 <link href={`https://fonts.googleapis.com/css?family=${font.family.split(' ').join('+')}&display=swap`} rel="stylesheet"></link>
@@ -179,10 +179,11 @@ render(){
     <div> 
 
  
+
+<Button category={ categorySelected } whatToShow={randomFont} handleClickFn={this.showRandom}>random font</Button>
     <Button category={ categorySelected } whatToShow={test} handleClickFn={this.showAll}>all</Button>
        <Button category={ categorySelected } whatToShow={serif} handleClickFn={this.showSerif}>serif only</Button>
        <Button category={ categorySelected } whatToShow={sansSerif} handleClickFn={this.showSansSerif}>sans-serif only</Button>
-       <Button category={ categorySelected } whatToShow={randomFont} handleClickFn={this.showRandom}>random font</Button>
 
         </div>
         :
@@ -196,6 +197,15 @@ render(){
     {showLoader ? <Loader /> : null}
 </div>
 
+{
+    categorySelected === randomFont ?   randomFont.map(font => (
+             <Font
+                 key={font.family}
+                 fontFamily={font.family}
+                 category={font.category}
+
+             />
+         )) :
 
 <StyledScroll style={{overflow:'hidden'}}
                             dataLength={fonts.length}
@@ -215,6 +225,7 @@ render(){
             } 
                         </StyledScroll> 
 
+        }
 
 
 
