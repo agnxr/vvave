@@ -10,10 +10,8 @@ import styled, {css} from 'styled-components';
 
 const StyledScroll = styled(InfiniteScroll)`
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     flex-wrap: wrap;
 `;
 
@@ -181,7 +179,7 @@ render(){
  
 
 <Button category={ categorySelected } whatToShow={randomFont} handleClickFn={this.showRandom}>random font</Button>
-    <Button category={ categorySelected } whatToShow={test} handleClickFn={this.showAll}>all</Button>
+    <Button category={ categorySelected } whatToShow={test} handleClickFn={this.showAll}>all fonts</Button>
        <Button category={ categorySelected } whatToShow={serif} handleClickFn={this.showSerif}>serif only</Button>
        <Button category={ categorySelected } whatToShow={sansSerif} handleClickFn={this.showSansSerif}>sans-serif only</Button>
 
