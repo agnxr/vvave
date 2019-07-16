@@ -6,6 +6,16 @@ import Loader from './../Loader/Loader';
 import Info from './Info/Info';
 import Button from './Button/Button';
 
+import styled, {css} from 'styled-components';
+
+const StyledFontSection = styled.section`
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+flex-wrap: wrap;
+
+`;
 
 class FontFinder extends React.Component {
     state = {
@@ -167,13 +177,45 @@ render(){
     fontsAmount !== null ? 
     
     <div> 
-    
-                       <Font
+    <StyledFontSection>
+    <Font
                         key={'elo'}
                         fontFamily={'AzZz'}
                         category={'serif'}
 
                     />
+                    <Font
+                        key={'elo'}
+                        fontFamily={'AzZz'}
+                        category={'serif'}
+
+                    />
+                    <Font
+                        key={'elo'}
+                        fontFamily={'AzZz'}
+                        category={'serif'}
+
+                    />
+                    <Font
+                        key={'elo'}
+                        fontFamily={'AzZz'}
+                        category={'serif'}
+
+                    />
+                    <Font
+                        key={'elo'}
+                        fontFamily={'AzZz'}
+                        category={'serif'}
+
+                    />
+                    <Font
+                        key={'elo'}
+                        fontFamily={'AzZz'}
+                        category={'serif'}
+
+                    />
+    </StyledFontSection>
+ 
     <Button category={ categorySelected } whatToShow={test} handleClickFn={this.showAll}>all</Button>
        <Button category={ categorySelected } whatToShow={serif} handleClickFn={this.showSerif}>serif only</Button>
        <Button category={ categorySelected } whatToShow={sansSerif} handleClickFn={this.showSansSerif}>sans-serif only</Button>
@@ -190,6 +232,7 @@ render(){
    <div>
     {showLoader ? <Loader /> : null}
 </div>
+<StyledFontSection>
 <InfiniteScroll style={{overflow:'hidden'}}
                             dataLength={fonts.length}
                             next={this.fetchMoreData}
@@ -207,6 +250,8 @@ render(){
                 )) 
             } 
                         </InfiniteScroll> 
+</StyledFontSection>
+
 
 
             

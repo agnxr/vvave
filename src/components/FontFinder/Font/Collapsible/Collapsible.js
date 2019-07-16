@@ -5,25 +5,54 @@ const StyledHeader = styled.div`
     cursor: pointer;
     border: solid 1px #f2f2f2;
     padding: 15px;
-    background-color: #0089CC;
+    background-color: #445bb7;
     color: #FFF;
-    font-family: verdana;
-    box-shadow: 0px 10px 14px -7px #276873;
-
+    box-shadow: 0px 10px 14px -7px #030221;
+    z-index: 1;
+:hover {
+    background-color: #03175b;
+    transition: 0.3s;
+}
 
 
 `;
 
 const StyledContent = styled.div`
     cursor: pointer;
+    padding: 10px;
+    overflow: auto;
     border-left: solid 1px #f2f2f2;
     border-right: solid 1px #f2f2f2;
     border-bottom: solid 1px #f2f2f2;
     border-radius: 0 0 5px 5px;
     padding: 15px;
-    font-family: verdana;
+text-align: left;
+    background-color: #F8F8F8;
     font-size: 14px;
-    
+    z-index: 1;
+/* width */
+::-webkit-scrollbar {
+            width: 7px;
+            height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+  background-color: #fff;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #03175b; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #030221; 
+}
  
     animation: slidein 0.7s ease-out;
   

@@ -7,23 +7,17 @@ const StyledFontFamily = styled.div`
   padding: 20px;
   background-color: #f9f9f9;
 
-
 `;
 
 const StyledFont = styled.div`
 background-color: #F5F5F5;
   width: 500px;
   height: 500px;
-  
-
-  padding: 70px 80px 0;
-
- 
+  padding: 50px 70px;
   background-color: white;
-
-
   box-shadow: 0 20px 40px -5px #606060;
-
+  margin: 30px;
+margin-bottom: 50px;
 `;
 
 const StyledTitle = styled.span`
@@ -33,15 +27,23 @@ const StyledTitle = styled.span`
   margin-bottom: 15px;
 `;
 
+const StyledSpan = styled.span`
+  padding: 10px;
+  width: 100%;
+  display: block;
+  background-color: #f9f9f9;
+  margin: 10px;
+`;
+
 const Font = ({fontFamily, category }) => (
     <StyledFont>
         <StyledFontFamily><span style={{fontFamily: `${fontFamily}`}}>{fontFamily}</span></StyledFontFamily>
         <p><StyledTitle>Category:</StyledTitle> {category}</p>
         <p>
         <StyledTitle>CSS rule:</StyledTitle> 
-            <span>
+            <StyledSpan>
                 font-family: '{fontFamily}', {category};
-            </span>
+            </StyledSpan>
         </p>
         <Collapsible title={'HTML code'}>{`<link href=https://fonts.googleapis.com/css?family=${fontFamily.split(' ').join('+')}&display=swap rel="stylesheet" />`}</Collapsible>
 
