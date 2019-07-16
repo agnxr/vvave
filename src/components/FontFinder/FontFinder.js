@@ -1,6 +1,5 @@
 import React from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
-
 import Font from './Font/Font';
 import Loader from './../Loader/Loader';
 import Info from './Info/Info';
@@ -10,12 +9,11 @@ import styled, {css} from 'styled-components';
 
 
 const StyledScroll = styled(InfiniteScroll)`
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    flex-wrap: wrap;
 `;
 
 class FontFinder extends React.Component {
