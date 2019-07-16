@@ -9,6 +9,7 @@ const StyledLoader = styled.div`
     height: 70px;
     display: flex;
     animation: spin 1s linear infinite;
+
     
     @keyframes spin {
     0% { transform: rotate(0deg); }

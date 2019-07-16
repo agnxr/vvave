@@ -3,16 +3,40 @@ import styled, {css} from 'styled-components';
 import Collapsible from './Collapsible/Collapsible';
 
 const StyledFontFamily = styled.div`
-  font-size: 64px;
+  font-size: 60px;
   padding: 20px;
   background-color: #f9f9f9;
+  overflow: hidden;
+  /* width */
+::-webkit-scrollbar {
+            width: 2px;
+            height: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+  background-color: #fff;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #D0D0D0; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #B8B8B8; 
+}
 
 `;
 
 const StyledFont = styled.div`
 background-color: #F5F5F5;
   width: 500px;
-  height: 500px;
+
   padding: 50px 70px;
   background-color: white;
   box-shadow: 0 20px 40px -5px #606060;

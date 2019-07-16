@@ -17,6 +17,15 @@ flex-wrap: wrap;
 
 `;
 
+const StyledScroll = styled(InfiniteScroll)`
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+flex-wrap: wrap;
+
+`;
+
 class FontFinder extends React.Component {
     state = {
         allFonts: [],
@@ -150,7 +159,7 @@ fetchMoreData = () => {
     setTimeout(() => {
       this.setState(prevState =>({
         //  selectItems: this.state.items.slice(0,6),
-        results: prevState.results + 1,
+        results: prevState.results + 2,
         fonts:  this.state.allFonts.slice(0, prevState.results + 3),
         
       }));
@@ -232,8 +241,8 @@ render(){
    <div>
     {showLoader ? <Loader /> : null}
 </div>
-<StyledFontSection>
-<InfiniteScroll style={{overflow:'hidden'}}
+
+<StyledScroll style={{overflow:'hidden'}}
                             dataLength={fonts.length}
                             next={this.fetchMoreData}
                             hasMore={this.state.hasMore}
@@ -249,8 +258,8 @@ render(){
                     />
                 )) 
             } 
-                        </InfiniteScroll> 
-</StyledFontSection>
+                        </StyledScroll> 
+
 
 
 
