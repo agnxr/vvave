@@ -8,14 +8,6 @@ import Button from './Button/Button';
 
 import styled, {css} from 'styled-components';
 
-const StyledFontSection = styled.section`
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-flex-wrap: wrap;
-
-`;
 
 const StyledScroll = styled(InfiniteScroll)`
 display: flex;
@@ -186,44 +178,7 @@ render(){
     fontsAmount !== null ? 
     
     <div> 
-    <StyledFontSection>
-    <Font
-                        key={'elo'}
-                        fontFamily={'AzZz'}
-                        category={'serif'}
 
-                    />
-                    <Font
-                        key={'elo'}
-                        fontFamily={'AzZz'}
-                        category={'serif'}
-
-                    />
-                    <Font
-                        key={'elo'}
-                        fontFamily={'AzZz'}
-                        category={'serif'}
-
-                    />
-                    <Font
-                        key={'elo'}
-                        fontFamily={'AzZz'}
-                        category={'serif'}
-
-                    />
-                    <Font
-                        key={'elo'}
-                        fontFamily={'AzZz'}
-                        category={'serif'}
-
-                    />
-                    <Font
-                        key={'elo'}
-                        fontFamily={'AzZz'}
-                        category={'serif'}
-
-                    />
-    </StyledFontSection>
  
     <Button category={ categorySelected } whatToShow={test} handleClickFn={this.showAll}>all</Button>
        <Button category={ categorySelected } whatToShow={serif} handleClickFn={this.showSerif}>serif only</Button>
