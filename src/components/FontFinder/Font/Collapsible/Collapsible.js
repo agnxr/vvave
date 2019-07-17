@@ -59,25 +59,24 @@ class Collapsible extends React.Component {
         open: false
     }
     
- 
     togglePanel = (e) => {
         this.setState({open: !this.state.open})
     }
 
         render() {
             return (
-            <>
-                <StyledHeader onClick={(e)=>this.togglePanel(e)}>
-                    {this.props.title}
-                </StyledHeader>
-                {
-                    this.state.open ? (
-                        <StyledContent>
-                        {this.props.children}
-                        </StyledContent>
-                ) : null
-                }
-            </>
+                <>
+                    <StyledHeader onClick={(e)=>this.togglePanel(e)}>
+                        {this.props.title}
+                    </StyledHeader>
+                    {
+                        this.state.open ? (
+                            <StyledContent>
+                            {this.props.children}
+                            </StyledContent>
+                        ) : null
+                    }
+                </>
         );
     }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Button.module.scss';
 import styled, {css} from 'styled-components';
 
 const StyledBtn = styled.button`
@@ -20,15 +19,13 @@ const StyledBtn = styled.button`
     )}
 `;
 
-
 const Button = ({children, handleClickFn, category, whatToShow}) => (
-       <StyledBtn
-            onClick={handleClickFn} 
-            active={category === whatToShow ? true : false }
-        >
-            {children}
-        </StyledBtn>
-
+    <StyledBtn
+        onClick={handleClickFn} 
+        active={category === whatToShow ? true : false }
+    >
+        {children}
+    </StyledBtn>
 )
 
 export default Button;

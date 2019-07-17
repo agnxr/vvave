@@ -36,8 +36,6 @@ const StyledFont = styled.div`
     background-color: #F5F5F5;
     width: 500px;
     min-height: 620px;
-
-
     padding: 50px 70px;
     background-color: white;
     box-shadow: 0 18px 32px -5px #606060;
@@ -73,10 +71,10 @@ const Font = ({fontFamily, category }) => (
         </StyledFontFamily>
         <p>
           <StyledTitle>Category:</StyledTitle> 
-          {category}
+            {category}
         </p>
         <p>
-        <StyledTitle>CSS rule:</StyledTitle> 
+            <StyledTitle>CSS rule:</StyledTitle> 
             <StyledSpan>
                 font-family: '{fontFamily}', {category};
             </StyledSpan>
