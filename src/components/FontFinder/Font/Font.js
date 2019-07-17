@@ -11,6 +11,11 @@ const StyledFontFamily = styled.div`
   justify-content: center;
   background-color: #f9f9f9;
   overflow: hidden;
+  @media (max-width: 575.98px) {
+    font-size: 30px;
+    height: 80px;
+    padding: 10px;
+  }
     ::-webkit-scrollbar {
         width: 2px;
         height: 2px;
@@ -41,6 +46,15 @@ const StyledFont = styled.div`
     box-shadow: 0 18px 32px -5px #606060;
     margin: 30px;
     margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    @media (max-width: 575.98px) {
+      width: 310px;
+      padding: 20px;
+      min-height: 500px;
+  }
 `;
 
 const StyledTitle = styled.span`

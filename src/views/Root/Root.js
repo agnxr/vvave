@@ -36,7 +36,6 @@ const StyledHeader = styled.header`
 
 
 const StyledContent = styled.div`
-  /* background: rgba(0, 0, 0, 0.5); */
   height: 480px;
   width: 100%;
   color: #fff;
@@ -137,7 +136,6 @@ class Root extends React.Component {
           <Switch>
             <Route exact path="/images" component={ImagesView}/>
             <Route exact path="/fonts" component={FontsView}/>
-            <Route exact path="/vectors" component={VectorsView}/>
             <Route exact path="/videos" component={VideosView}/>
             <Route exact path="/colors" component={ColorsView}/>
           </Switch>

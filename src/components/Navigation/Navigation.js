@@ -43,11 +43,6 @@ const Navigation = () => (
                 </StyledNavLink>
             </StyledNavItem>
             <StyledNavItem>
-                <StyledNavLink exact activeclass="active"  to="/vectors">
-                    Vectors
-                </StyledNavLink>
-            </StyledNavItem>
-            <StyledNavItem>
                 <StyledNavLink exact activeclass="active"  to="/videos">
                     Short videos
                 </StyledNavLink>

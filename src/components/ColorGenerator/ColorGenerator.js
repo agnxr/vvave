@@ -1,7 +1,4 @@
 import React from 'react';
-import InfiniteScroll from "react-infinite-scroll-component";
-import Loader from '../Loader/Loader';
-
 import Button from './Button/Button';
 import styled, {css} from 'styled-components';
 
@@ -29,7 +26,7 @@ const StyledDiv = styled.div`
 class ColorGenerator extends React.Component {
     state = { 
         color: [153, 51, 255],
-        bg: 'green',
+        bg: '#445bb7',
     }
 
     myRef = React.createRef();
@@ -41,11 +38,8 @@ class ColorGenerator extends React.Component {
         });
     }
 
-  componentDidMount() {
-    this.applyColor();
-  }
 
- 
+
 
   formatColor(rgbArray) {
     return 'rgb(' + rgbArray.join(', ') + ')';
