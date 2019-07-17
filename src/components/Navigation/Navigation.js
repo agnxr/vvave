@@ -33,7 +33,7 @@ const Navigation = () => (
     <nav>
         <ul>
             <StyledNavItem>
-                <StyledNavLink exact activeclass="active"  to="/images">
+                <StyledNavLink exact activeclass="active"  to="/">
                     Images
                 </StyledNavLink>
             </StyledNavItem>

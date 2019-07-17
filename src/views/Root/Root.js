@@ -134,7 +134,7 @@ class Root extends React.Component {
             <Navigation/>
           </StyledCategories>
           <Switch>
-            <Route exact path="/images" component={ImagesView}/>
+            <Route exact path="/" component={ImagesView}/>
             <Route exact path="/fonts" component={FontsView}/>
             <Route exact path="/videos" component={VideosView}/>
             <Route exact path="/colors" component={ColorsView}/>
