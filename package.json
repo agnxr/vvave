@@ -2,12 +2,12 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://agnxr.github.io/vvave",
   "dependencies": {
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-infinite-scroll-component": "^4.5.2",
-    "react-infinite-scroller": "^1.2.4",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-router-hash-link": "^1.2.1",
