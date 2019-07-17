@@ -52,7 +52,7 @@ const StyledTitle = styled.h1`
 font-size: 40px;
 `;
 
-const StyledTopBar = styled.section`
+const StyledBar = styled.section`
   background-color: #000;
   color: #fff;
   display: flex;
@@ -114,10 +114,10 @@ class Root extends React.Component {
           <GlobalStyle />
           <StyledHeader>
             <section>
-              <StyledTopBar>
+              <StyledBar>
                 <a href="/"><StyledLogo src={logo} alt="vvave"/></a>
                 <p>vvave | Inspire yourself | Everything you need in one place</p>
-              </StyledTopBar>
+              </StyledBar>
               <StyledContent>
                 <StyledTitle>Find materials for your project</StyledTitle>
                 <p>everything you need in one place</p>
@@ -139,9 +139,10 @@ class Root extends React.Component {
             <Route exact path="/videos" component={VideosView}/>
             <Route exact path="/colors" component={ColorsView}/>
           </Switch>
-          <StyledFooter>
-            <p>2019 © vvave | Inspire yourself | Everything you need in one place</p>
-          </StyledFooter>
+          <StyledBar>
+                <a href="/"><StyledLogo src={logo} alt="vvave"/></a>
+                <p>2019 © vvave | Inspire yourself | Everything you need in one place</p>
+          </StyledBar>
         </>
       </BrowserRouter>
     )

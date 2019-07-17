@@ -2,25 +2,22 @@ import React from 'react';
 import Button from './Button/Button';
 import styled, {css} from 'styled-components';
 
-const StyledListSection = styled.section`
+const StyledColourName = styled.div`
+  font-size: 40px;
+  padding: 30px;
+  margin: 20px;
+  height: 100px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  overflow: hidden;
+  justify-content: center;
+  background-color: #f9f9f9;
+  width: 40vw;
 `;
 
-
-const StyledDiv = styled.div`
-  border: 3px solid blue;
+const StyledColour = styled.div`
+  width: 40vw;
   height: 300;
   width: 300;
-
-
-    ${({active}) => (
-        active && css `
-        border: 3px solid #030221;
-        `
-    )}
 `;
 
 class ColorGenerator extends React.Component {
@@ -29,8 +26,6 @@ class ColorGenerator extends React.Component {
         bg: '#445bb7',
     }
 
-    myRef = React.createRef();
-
     handleClick = () => {
         this.setState({ 
             color: this.chooseColor(),
@@ -38,45 +33,39 @@ class ColorGenerator extends React.Component {
         });
     }
 
-
-
-
-  formatColor(rgbArray) {
-    return 'rgb(' + rgbArray.join(', ') + ')';
-  }
-
-  applyColor() {
-    const color = this.formatColor(this.state.color);
-  
-    //this.myRef.style.background = color;
-    this.setState({ 
-        bg: this.formatColor(this.state.color)
-    });
-  }
-
-  chooseColor() {
-    const random = [];
-    for (let i = 0; i < 3; i++) {
-      random.push(Math.floor(Math.random()*256));
+    formatColor(rgbArray) {
+      return 'rgb(' + rgbArray.join(', ') + ')';
     }
-    return random;
-  }
 
+    applyColor() {
+      this.setState({ 
+          bg: this.formatColor(this.state.color)
+      });
+    }
 
-  render() {
-    return (
-      <div>
-      <Button refreshFn={this.handleClick} />
-        <p>
-          {this.formatColor(this.state.color)}
-        </p>
+    chooseColor() {
+      const random = [];
 
-        <StyledDiv style={{height:200, backgroundColor:`${this.state.bg}`}}>
-            fefefejhf
-            </StyledDiv>
-      </div>
-    );
-  }
+      for (let i = 0; i < 3; i++) {
+        random.push(Math.floor(Math.random()*256));
+      }
+      
+      return random;
+    }
+
+    render() {
+      return (
+        <>
+          <Button refreshFn={this.handleClick} />
+          <StyledColourName>
+            <p>
+              {this.formatColor(this.state.color)}
+            </p>
+          </StyledColourName>
+          <StyledColour style={{height:200, backgroundColor:`${this.state.bg}`}} />
+        </>
+      );
+    }
 }
 
 export default ColorGenerator;
