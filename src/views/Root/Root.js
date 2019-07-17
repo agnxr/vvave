@@ -6,12 +6,15 @@ import ImagesView from '../ImagesView/ImagesView';
 import FontsView from '../FontsView/FontsView';
 import VectorsView from '../VectorsView/VectorsView';
 import VideosView from '../VideosView/VideosView';
+import ColorsView from '../ColorsView/ColorsView';
+
 import Navigation from '../../components/Navigation/Navigation';
 import GlobalStyle from '../../theme/GlobalStyle';
 import { theme } from '../../theme/mainTheme';
 
 import video from '../../assets/blue.mp4';
 import logo from '../../assets/logo.svg';
+import logoBlack from '../../assets/logo-black.svg';
 import pointer from '../../assets/pointer.svg';
 import background from '../../assets/fallback.png';
 
@@ -101,7 +104,6 @@ const StyledFooter = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   text-align: center;
 `;
 
@@ -137,9 +139,10 @@ class Root extends React.Component {
             <Route exact path="/fonts" component={FontsView}/>
             <Route exact path="/vectors" component={VectorsView}/>
             <Route exact path="/videos" component={VideosView}/>
+            <Route exact path="/colors" component={ColorsView}/>
           </Switch>
           <StyledFooter>
-            <p>2019 © Agnieszka Rakowska</p>
+            <p>2019 © vvave | Inspire yourself | Everything you need in one place</p>
           </StyledFooter>
         </>
       </BrowserRouter>

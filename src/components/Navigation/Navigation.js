@@ -52,6 +52,11 @@ const Navigation = () => (
                     Short videos
                 </StyledNavLink>
             </StyledNavItem>
+            <StyledNavItem>
+                <StyledNavLink exact activeclass="active"  to="/colors">
+                    Colors
+                </StyledNavLink>
+            </StyledNavItem>
         </ul>
     </nav>
 );
