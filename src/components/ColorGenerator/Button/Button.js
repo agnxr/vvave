@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Button = ({ showAllFn }) => (
-    <button onClick={showAllFn}>Show All</button> 
+const Button = ({ refreshFn }) => (
+    <button onClick={refreshFn}>Refresh</button> 
   );
   
 export default Button;

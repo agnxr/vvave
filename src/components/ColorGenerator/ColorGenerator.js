@@ -2,7 +2,7 @@ import React from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from '../Loader/Loader';
 
-import { Button } from './Button/Button';
+import Button from './Button/Button';
 import styled, {css} from 'styled-components';
 
 const StyledListSection = styled.section`
@@ -72,12 +72,11 @@ class ColorGenerator extends React.Component {
   render() {
     return (
       <div>
-        <h1>
+      <Button refreshFn={this.handleClick} />
+        <p>
           {this.formatColor(this.state.color)}
-        </h1>
-        <button 
-          onClick={this.handleClick} 
-        >testuuuuj</button>
+        </p>
+
         <StyledDiv style={{height:200, backgroundColor:`${this.state.bg}`}}>
             fefefejhf
             </StyledDiv>
