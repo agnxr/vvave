@@ -1,6 +1,6 @@
 import React from 'react';
 import FontFinder from '../../components/FontFinder/FontFinder';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 const StyledFontSection = styled.section`
   display: flex;
@@ -12,7 +12,7 @@ const StyledFontSection = styled.section`
   background-color: #fff;
   padding: 20px;
   letter-spacing: 3px;
-  color: #030221;
+  color: ${({theme}) => theme.violet300};
   animation: slidein 2s ease-out;
   
   @keyframes slidein {

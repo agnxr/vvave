@@ -1,12 +1,10 @@
 import React from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
+import styled from 'styled-components';
 import Font from './Font/Font';
 import Loader from './../Loader/Loader';
 import Info from './Info/Info';
 import Button from './Button/Button';
-
-import styled, {css} from 'styled-components';
-
 
 const StyledScroll = styled(InfiniteScroll)`
     display: flex;

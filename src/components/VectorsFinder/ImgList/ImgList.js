@@ -1,6 +1,6 @@
 import React from 'react';
 import Img from './Img/Img';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 const StyledImgList = styled.ul`
   list-style: none;
@@ -15,7 +15,6 @@ const StyledImgList = styled.ul`
     100%{ opacity:1; }
   }
 `;
-
 
 const ImgList = ({ images }) => (
   <StyledImgList>

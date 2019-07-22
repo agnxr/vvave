@@ -1,7 +1,9 @@
 export const theme = {
+  violet10: 'red',
     violet100: '#445bb7',
     violet200: '#03175b',
     violet300: '#030221',
+    violet400: '#020007',
     light: 300,
     bold: 600,
     fontSize: {

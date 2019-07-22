@@ -1,22 +1,22 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 const StyledNavLink = styled(NavLink)`
     color: #fff;
     text-decoration: none;
     padding: 20px;
     border-radius: 60px;
-    background-color: #445bb7;
+    background-color: ${({theme}) => theme.violet100};
     transition: 0.3s;
 
     &:hover {
-        background-color: #03175b;
+        background-color: ${({theme}) => theme.violet200};
     }
 
     &.active {
         transition: 1s;
-        background-color: #030221;
+        background-color: ${({theme}) => theme.violet300};
     }
 `;
 
@@ -27,7 +27,6 @@ const StyledNavItem = styled.li`
     border-radius: 60px;
     margin: 30px;
 `;
-
 
 const Navigation = () => (
     <nav>

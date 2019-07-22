@@ -1,10 +1,10 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 
 const StyledInfo = styled.div`
     padding: 20px;
-    color: #030221;
+    color: ${({theme}) => theme.violet300};
     opacity:0;
     animation: slidein 1s ease-out forwards;
   

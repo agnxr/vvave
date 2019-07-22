@@ -1,14 +1,14 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import search from '../../../assets/search.svg';
 
 const StyledSubmit = styled.input`
-  border-top: 3px solid #030221;
-  border-bottom: 3px solid #030221;
-  border-right: 3px solid #03175b;
+  border-top: 3px solid ${({theme}) => theme.violet300};
+  border-bottom: 3px solid ${({theme}) => theme.violet300};
+  border-right: 3px solid ${({theme}) => theme.violet200};
   border-left: none;
   border-bottom-right-radius: 25px;
-  background-color: #03175b;
+  background-color: ${({theme}) => theme.violet200};
   padding: 20px;
   cursor: pointer;
   background-image: url(${search});
@@ -20,15 +20,15 @@ const StyledSubmit = styled.input`
   margin-bottom: 50px;
   transition: 1s;
     &:hover {
-        background-color: #030221;
+        background-color: ${({theme}) => theme.violet300};
     }
 `;
 
 const StyledInput = styled.input`
-  border-top: 3px solid #030221;
-  border-bottom: 3px solid #030221;
-  border-left: 3px solid #03175b;
-  border-right: 3px solid #03175b;
+  border-top: 3px solid ${({theme}) => theme.violet300};
+  border-bottom: 3px solid ${({theme}) => theme.violet300};
+  border-left: 3px solid ${({theme}) => theme.violet200};
+  border-right: 3px solid ${({theme}) => theme.violet200};
   border-top-left-radius: 25px;
   background-color: #fff;
   padding: 20px;

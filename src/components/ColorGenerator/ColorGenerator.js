@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './Button/Button';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 const StyledColourName = styled.div`
   font-size: 40px;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Item from './Item/Item';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 const StyledItemsList = styled.ul`
   list-style: none;

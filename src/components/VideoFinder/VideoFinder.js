@@ -1,10 +1,9 @@
 import React from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
+import styled from 'styled-components';
 import Form from './Form/Form';
 import ItemsList from './ItemsList/ItemsList';
 import Loader from '../Loader/Loader';
-
-import styled, {css} from 'styled-components';
 
 const StyledListSection = styled.section`
   display: flex;

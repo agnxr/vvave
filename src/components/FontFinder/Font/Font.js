@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import Collapsible from './Collapsible/Collapsible';
 
 const StyledFontFamily = styled.div`

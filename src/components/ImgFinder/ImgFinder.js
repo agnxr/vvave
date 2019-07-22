@@ -1,10 +1,9 @@
 import React from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
+import styled from 'styled-components';
 import Form from './Form/Form';
 import ImgList from './ImgList/ImgList';
 import Loader from './../Loader/Loader';
-
-import styled, {css} from 'styled-components';
 
 const StyledListSection = styled.section`
   display: flex;
@@ -72,7 +71,13 @@ class ImgFinder extends React.Component {
 
     render(){
 
-        const { error, selectedImages, showLoader, allImages, noResults } = this.state;
+        const { 
+            error, 
+            selectedImages, 
+            showLoader, 
+            allImages, 
+            noResults 
+        } = this.state;
 
         return (
             <>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ImgFinder from '../../components/ImgFinder/ImgFinder';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 const StyledImageSection = styled.section`
   display: flex;

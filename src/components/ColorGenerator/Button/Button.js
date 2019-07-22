@@ -1,9 +1,9 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 const StyledBtn = styled.button`
     padding: 20px;
-    border: 1px solid #03175b;
+    border: 1px solid ${({theme}) => theme.violet200};
     background-color: #fff;
     margin: 20px;
     border-radius: 25px;
@@ -11,11 +11,11 @@ const StyledBtn = styled.button`
     font-family: "Montserrat", sans-serif;
     cursor: pointer;
     font-weight: bold;
-    color: #03175b;
+    color: ${({theme}) => theme.violet200};
     transition: 0.3s;
 
     &:hover {
-        background-color: #03175b;
+        background-color: ${({theme}) => theme.violet200};
         color: #fff;
     }
 `;
