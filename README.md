@@ -19,7 +19,7 @@ Here’s a quick overview of vvave features:
 
 https://agnxr.github.io/vvave
 
-![screen](https://user-images.githubusercontent.com/32043294/61630736-c4df2980-ac88-11e9-922b-7f4a35797345.png)
+![scr](https://user-images.githubusercontent.com/32043294/61631482-c4e02900-ac8a-11e9-8315-846398c15fb8.png)
 ## 🔨 Technologies 
 
 * React
