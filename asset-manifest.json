@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.js": "/vvave/static/js/main.d08fc8bc.chunk.js",
+    "main.js.map": "/vvave/static/js/main.d08fc8bc.chunk.js.map",
+    "runtime~main.js": "/vvave/static/js/runtime~main.ff9edfbb.js",
+    "runtime~main.js.map": "/vvave/static/js/runtime~main.ff9edfbb.js.map",
+    "static/js/2.7f664112.chunk.js": "/vvave/static/js/2.7f664112.chunk.js",
+    "static/js/2.7f664112.chunk.js.map": "/vvave/static/js/2.7f664112.chunk.js.map",
+    "index.html": "/vvave/index.html",
+    "precache-manifest.35746df76a32adbd9d431674e75e47df.js": "/vvave/precache-manifest.35746df76a32adbd9d431674e75e47df.js",
+    "service-worker.js": "/vvave/service-worker.js",
+    "static/media/blue.mp4": "/vvave/static/media/blue.29d6f388.mp4",
+    "static/media/fallback.png": "/vvave/static/media/fallback.d4e2d7af.png",
+    "static/media/logo.svg": "/vvave/static/media/logo.fe25f0c4.svg",
+    "static/media/pointer.svg": "/vvave/static/media/pointer.fc1f336a.svg",
+    "static/media/search.svg": "/vvave/static/media/search.b86c912c.svg"
+  }
+}
